@@ -29,8 +29,6 @@
 
     <!-- Navbar includes -->
 
-
-
 </head>
 <body>
     @guest
@@ -81,12 +79,12 @@
                 <div class="sidebar-submenu">
                 <ul>
                     <li>
-                    <a href="#">Overview
+                    <a href="{{route('home')}}">Overview
                         <span class="badge badge-pill badge-success">Pro</span>
                     </a>
                     </li>
                     <li>
-                    <a href="#">Calendar</a>
+                    <a href="{{route('calendar')}}">Calendar</a>
                     </li>
                 </ul>
                 </div>
@@ -99,13 +97,13 @@
                 <div class="sidebar-submenu">
                 <ul>
                     <li>
-                    <a href="#">Log</a>
+                    <a href="{{route('log')}}">Log</a>
                     </li>
                     <li>
-                    <a href="#">Search</a>
+                    <a href="{{route('search')}}">Search</a>
                     </li>                
                     <li>
-                    <a href="#">Recipe</a>
+                    <a href="{{route('recipe')}}">Recipe</a>
                     </li>
                 </ul>
                 </div>
@@ -119,10 +117,10 @@
                 <div class="sidebar-submenu">
                 <ul>
                     <li>
-                    <a href="#">Goals</a>
+                    <a href="{{route('goal')}}">Goals</a>
                     </li>
                     <li>
-                    <a href="#">Progress</a>
+                    <a href="{{route('progress')}}">Progress</a>
                     </li>
                     <li>
                 </ul>
@@ -137,10 +135,10 @@
                 <div class="sidebar-submenu">
                 <ul>
                     <li>
-                    <a href="#">Profile</a>
+                    <a href="{{route('profile')}}">Profile</a>
                     </li>
                     <li>
-                    <a href="#">Settings</a>
+                    <a href="{{route('settings')}}">Settings</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"

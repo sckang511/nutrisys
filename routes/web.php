@@ -17,4 +17,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// HOME
+Route::get('/home', 'Dashboard\HomeController@index')->name('home');
+Route::get('/calendar', 'Dashboard\CalendarController@index')->name('calendar');
+
+// FOOD
+Route::get('/food', 'Food\LogController@index')->name('log');
+Route::get('/food/log', 'Food\LogController@index')->name('log');
+Route::get('/food/search', 'Food\SearchController@index')->name('search');
+Route::get('/food/recipe', 'Food\RecipeController@index')->name('recipe');
+
+// GOAL
+Route::get('/goal', 'Goal\GoalController@index')->name('goal');
+Route::get('/goal/goal', 'Goal\GoalController@index')->name('goal');
+Route::get('/goal/progress', 'Goal\ProgressController@index')->name('progress');
+
+// PROFILE
+Route::get('/profile', 'Profile\ProfileController@index')->name('profile');
+Route::get('/profile/profile', 'Profile\ProfileController@index')->name('profile');
+Route::get('/profile/settings', 'Profile\SettingsController@index')->name('settings');
