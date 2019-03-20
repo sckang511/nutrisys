@@ -9,6 +9,9 @@
 
 ## NutriSYS
 
+IMPORTANT:
+
+1. Please make sure that the database is as specified in config/database.php
 
 ## Contributing
 
