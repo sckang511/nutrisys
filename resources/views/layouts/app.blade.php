@@ -12,67 +12,169 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Navbar includes -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    <link href="{{ asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ asset('js/main.js')}}"></script>
+
+    <!-- Navbar includes -->
+
+
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+    @guest
+    @yield('content')
+    @else
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Nutrisys') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->first_name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+    <!--Nav bar-->
+    <!--Nav bar-->
+    <!--Nav bar-->
+    <div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+        <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+        <div class="sidebar-brand">
+            <a href="#">Nutrisys</a>
+            <div id="close-sidebar">
+            <i class="fas fa-times"></i>
             </div>
-        </nav>
+        </div>
+        <div class="sidebar-header">
+            <div class="user-info">
+            <span class="user-name">{{ Auth::user()->first_name }}
+                <strong>{{ Auth::user()->last_name }}</strong>
+            </span>
+            <span class="user-role">Standard User</span>
+            <span class="user-status">
+                <i class="fa fa-circle"></i>
+                <span>Online</span>
+            </span>
+            </div>
+        </div>
+        <!-- sidebar-header  -->
 
-        @yield('content')
+        <!-- sidebar-search  -->
+        <div class="sidebar-menu">
+            <ul>
+            <li class="header-menu">
+                <span>General</span>
+            </li>
+            <li class="sidebar-dropdown">
+                <a href="#">
+                <i class="fa fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+                <span class="badge badge-pill badge-warning">New</span>
+                </a>
+                <div class="sidebar-submenu">
+                <ul>
+                    <li>
+                    <a href="#">Overview
+                        <span class="badge badge-pill badge-success">Pro</span>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="#">Calendar</a>
+                    </li>
+                </ul>
+                </div>
+            </li>
+            <li class="sidebar-dropdown">
+                <a href="#">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Food</span>
+                </a>
+                <div class="sidebar-submenu">
+                <ul>
+                    <li>
+                    <a href="#">Log</a>
+                    </li>
+                    <li>
+                    <a href="#">Search</a>
+                    </li>                
+                    <li>
+                    <a href="#">Recipe</a>
+                    </li>
+                </ul>
+                </div>
+            </li>
+            
+            <li class="sidebar-dropdown">
+                <a href="#">
+                <i class="fa fa-chart-line"></i>
+                <span>Goal</span>
+                </a>
+                <div class="sidebar-submenu">
+                <ul>
+                    <li>
+                    <a href="#">Goals</a>
+                    </li>
+                    <li>
+                    <a href="#">Progress</a>
+                    </li>
+                    <li>
+                </ul>
+                </div>
+            </li>
+
+            <li class="sidebar-dropdown">
+                <a href="#">
+                <i class="fa fa-globe"></i>
+                <span>Profile</span>
+                </a>
+                <div class="sidebar-submenu">
+                <ul>
+                    <li>
+                    <a href="#">Profile</a>
+                    </li>
+                    <li>
+                    <a href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+                </div>
+            </li>        
+            </ul>
+        </div>
+        <!-- sidebar-menu  -->
+        </div>
+  </nav>
+
+    <main class="page-content">
+    @yield('content')
+    </main>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+          <!--Nav bar-->
+    <!--Nav bar-->
+    <!--Nav bar-->
+    @endguest
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

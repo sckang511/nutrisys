@@ -24,11 +24,10 @@ Thank you for contributing to Nutrisys project. Please take note of the followin
 
 1. Clone this project to your web server directory.
 2. On the terminal, inside the project directory, run 'composer install' to get all the dependencies of this project
-3. Copy to create file .env from .env.example. Please edit the database credentials to ones of your local database.
-4. Change the first line of .env file to 'APP_NAME=Nutrisys'
-5. Please name the database 'nutrisys' as a convention of this project.
-6. On the terminal, inside the project directory, run 'php artisan migrate' to migrate the laravel database specifications to your local database.
-7. Lastly, run 'php artisan key:generate' to generate a key for your project.
+3. Copy to create file .env from .env.example. Please make sure your database credentials are as specified.
+4. On the terminal, inside the project directory, run 'php artisan migrate' to migrate the laravel database specifications to your local database.
+5. Lastly, run 'php artisan key:generate' to generate a key for your project.
+6. You are now ready to contribute!
 
 ## License
 
