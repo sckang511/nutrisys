@@ -22,7 +22,6 @@
     <link href="{{ asset('css/style.css')}}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('js/main.js')}}"></script>
@@ -74,7 +73,7 @@
                 <a href="#">
                 <i class="fa fa-tachometer-alt"></i>
                 <span>Dashboard</span>
-                <span class="badge badge-pill badge-warning">New</span>
+                <span class="badge badge-pill badge-danger">New</span>
                 </a>
                 <div class="sidebar-submenu">
                 <ul>
@@ -129,7 +128,7 @@
 
             <li class="sidebar-dropdown">
                 <a href="#">
-                <i class="fa fa-globe"></i>
+                <i class="fa fa-user-circle"></i>
                 <span>Profile</span>
                 </a>
                 <div class="sidebar-submenu">
