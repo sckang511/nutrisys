@@ -19,7 +19,7 @@
                         <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" id="food_search">
                     </form>
                     <div style="margin-top: 30px;">
-                        <pre id="search_results">
+                        <pre id="search_results" style="display: none;">
                             <!-- Results -->                
                         </pre>
                     </div>
@@ -39,6 +39,7 @@
         var value = textinput.value;
         if (value == "") {
             document.getElementById("search_results").innerHTML = "";
+            document.getElementById("search_results").style.display = "none";
             return;
         };
         $.ajax({
@@ -52,6 +53,7 @@
             success: function (data) {
 
                 var resultsdiv = document.getElementById("search_results");
+                resultsdiv.style.display = "block";
                 resultsdiv.innerHTML = "";
 
                 var commonArray = data["common"];
