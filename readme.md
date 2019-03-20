@@ -12,11 +12,11 @@
 ## Contributing
 
 Thank you for contributing to Nutrisys project. Please take note of the following:
-0. Please make sure your PHP version is 7 or higher. This project uses Laravel 5.5.0 LTS.
-1. Please make sure that the database is as specified in config/database.php (especially charset and collation).
-2. Please make commits as frequently as possible with detailed messages.
-3. Please make sure the code is functional before you push your commits to the master.
-4. Please check for permission on making changes of files that are not isolated.
+1. Please make sure your PHP version is 7 or higher. This project uses Laravel 5.5.0 LTS.
+2. Please make sure that the database is as specified in config/database.php (especially charset and collation).
+3. Please make commits as frequently as possible with detailed messages.
+4. Please make sure the code is functional before you push your commits to the master.
+5. Please check for permission on making changes of files that are not isolated.
 
 ## Set Up
 
