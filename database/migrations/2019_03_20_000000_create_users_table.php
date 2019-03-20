@@ -19,6 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('email', 250)->unique();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('user_type')->default('standard');
+            $table->string('profile_picture')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->double('weight', 8, 2)->nullable();
             $table->double('height', 8, 2)->nullable();
             $table->string('birthdate')->nullable();

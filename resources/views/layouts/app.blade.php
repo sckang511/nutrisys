@@ -44,17 +44,21 @@
     <nav id="sidebar" class="sidebar-wrapper">
         <div class="sidebar-content">
         <div class="sidebar-brand">
-            <a href="#">Nutrisys</a>
+            <a href="#">Welcome to Nutrisys</a>
             <div id="close-sidebar">
             <i class="fas fa-times"></i>
             </div>
         </div>
         <div class="sidebar-header">
+            <div class="user-pic">
+            <img class="img-responsive img-rounded" src="{{ asset('images/user.jpg')}}"
+            alt="User picture">
+            </div>
             <div class="user-info">
             <span class="user-name">{{ Auth::user()->first_name }}
                 <strong>{{ Auth::user()->last_name }}</strong>
             </span>
-            <span class="user-role">Standard User</span>
+            <span class="user-role">{{ Auth::user()->user_type }} user</span>
             <span class="user-status">
                 <i class="fa fa-circle"></i>
                 <span>Online</span>
