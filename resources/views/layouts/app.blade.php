@@ -75,13 +75,11 @@
                 <a href="#">
                 <i class="fa fa-tachometer-alt"></i>
                 <span>Dashboard</span>
-                <span class="badge badge-pill badge-danger">New</span>
                 </a>
                 <div class="sidebar-submenu">
                 <ul>
                     <li>
                     <a href="{{route('home')}}">Overview
-                        <span class="badge badge-pill badge-success">Pro</span>
                     </a>
                     </li>
                     <li>
@@ -94,6 +92,7 @@
                 <a href="#">
                 <i class="fa fa-shopping-cart"></i>
                 <span>Food</span>
+                <span class="badge badge-pill badge-danger">New</span>
                 </a>
                 <div class="sidebar-submenu">
                 <ul>
@@ -101,7 +100,8 @@
                     <a href="{{route('log')}}">Log</a>
                     </li>
                     <li>
-                    <a href="{{route('search')}}">Search</a>
+                    <a href="{{route('search')}}">Search
+                        <span class="badge badge-pill badge-danger">New</span> </a>
                     </li>                
                     <li>
                     <a href="{{route('recipe')}}">Recipe</a>
