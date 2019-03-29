@@ -14,7 +14,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.profile');
+        $user = Auth::User();
+        return view('profile.profile')->with('user',$user);
     }
 
     /**
@@ -36,6 +37,29 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'username' => 'required|string|max:255',
+            'gender' => 'required|string',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'height' => 'required|integer',
+            'weight' => 'required|integer',
+            'birthdate' => 'required|date',
+            'phone' => 'required|string|max:255',
+        ]);
+        
+        $user = Auth::User();
+        $user->username = $request->username;
+        $user->height = $request->height;
+        $user->weight = $request->weight;
+        $user->phone = $request->phone;
+        $user->birthdate = $request->birthdate;
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->gender = $request->gender;
+        $user->save();
+        
+        return view('profile.profile')->with('user',$user);
     }
 
     /**
