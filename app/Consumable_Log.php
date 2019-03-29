@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Food_Log extends Model
+class Consumable_Log extends Model
 {
     //
 }
