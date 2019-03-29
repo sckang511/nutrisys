@@ -38,3 +38,4 @@ Route::get('/profile', 'Profile\ProfileController@index')->name('profile');
 Route::get('/profile/profile', 'Profile\ProfileController@index')->name('profile');
 Route::get('/profile/settings', 'Profile\SettingsController@index')->name('settings');
 Route::post('/profile/profile', 'Profile\ProfileController@store')->name('profile');
+Route::post('/profile/settings', 'Profile\SettingsController@store')->name('settings');
