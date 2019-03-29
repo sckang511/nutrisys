@@ -50,6 +50,18 @@
                 "x-app-id": "bbed59ef",
                 "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
             },
+            /*headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+            },
+            headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+            },
+            headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+            },*/
             success: function (data) {
 
                 var resultsdiv = document.getElementById("search_results");

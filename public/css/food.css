@@ -1,3 +1,35 @@
+/* Food Search Page */
+
 .pre-food {
     background-color: white;
+}
+
+/* Food Log Page */
+
+.food-log-table-ul {
+    list-style-type: none;
+    padding-inline-start: 0%;
+}
+
+.food-log-table-header {
+    border-bottom: 1px solid gray;
+}
+
+.food-log-table-dropdown {
+    border-bottom: 1px solid gray;
+    cursor: pointer;
+}
+
+.food-log-table-dropdown:hover {
+    color: gainsboro;
+}
+
+.food-log-table-dropdown-submenu {
+    transition: opacity .8s ease-in-out;
+}
+
+.food-log-table-dropdown-submenu ul {
+    padding-inline-start: 5%;
+    list-style-type: none;
+    background-color: gainsboro;
 }
