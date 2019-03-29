@@ -46,7 +46,7 @@
                 </tr>
                 <tr>
                   <td>Birthdate: </td>
-                  <td><input class="form-control input-lg" type="date" name="birthdate" value="{{ $user->birthdate }}" readonly></td>
+                  <td><input class="form-control input-lg" type="date" name="birthdate" value="{{ $user->birthdate }}"></td>
                 </tr>
                 <tr>
                   <td>Phone: </td>

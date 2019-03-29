@@ -36,4 +36,4 @@ Route::get('/goal/progress', 'Goal\ProgressController@index')->name('progress');
 Route::get('/profile', 'Profile\ProfileController@index')->name('profile');
 Route::get('/profile/profile', 'Profile\ProfileController@index')->name('profile');
 Route::get('/profile/settings', 'Profile\SettingsController@index')->name('settings');
-Route::post('/profile/profile', 'Profile\ProfileControll@store')->name('profile');
+Route::post('/profile/profile', 'Profile\ProfileController@store')->name('profile');

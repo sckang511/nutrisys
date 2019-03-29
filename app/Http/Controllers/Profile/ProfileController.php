@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -54,8 +55,8 @@ class ProfileController extends Controller
         $user->weight = $request->weight;
         $user->phone = $request->phone;
         $user->birthdate = $request->birthdate;
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->gender = $request->gender;
         $user->save();
         
