@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Goal;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Goal;
 
 class GoalController extends Controller
 {
@@ -14,7 +15,8 @@ class GoalController extends Controller
      */
     public function index()
     {
-        return view('goal.goal');
+        $goals = Goal::all();
+        return view('goal.goal')->with('goals', $goals);
     }
 
     /**
@@ -35,7 +37,22 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validate the data
+        $this->validate($request, array(
+            'preference' => 'required',
+            'the_value' => 'required',
+        ));
+
+        //Store in database
+        $goal = new Goal;
+        $goal->nutrition_type = $request->preference;
+        $goal->daily_value = $request->the_value;
+        $goal->save();
+
+        //Session::flash('success', 'Daily value has been succesfully set.');
+
+        //Redirect to another page
+       return redirect('goal')->with('goal', $goal);
     }
 
     /**

@@ -31,6 +31,7 @@ Route::get('/food/recipe', 'Food\RecipeController@index')->name('recipe');
 Route::get('/goal', 'Goal\GoalController@index')->name('goal');
 Route::get('/goal/goal', 'Goal\GoalController@index')->name('goal');
 Route::get('/goal/progress', 'Goal\ProgressController@index')->name('progress');
+Route::post('/goal','GoalController@store')->name('store');
 
 // PROFILE
 Route::get('/profile', 'Profile\ProfileController@index')->name('profile');
