@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Goal;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Goal;
 
 class ProgressController extends Controller
 {
@@ -14,7 +15,8 @@ class ProgressController extends Controller
      */
     public function index()
     {
-        return view('goal.progress');
+        $goals = Goal::all();
+        return view('goal.progress')->with('goals', $goals);
     }
 
     /**
