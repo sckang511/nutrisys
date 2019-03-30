@@ -17,10 +17,8 @@ class CreateConsumableItemsTable extends Migration
             $table->increments('consumable_item_id');
             $table->unsignedInteger('consumable_collection_id');
             $table->foreign('consumable_collection_id')->references('consumable_collection_id')->on('consumable_collections');
-            $table->string('item_id');
-            $table->string('item_name');
-            $table->double('serving', 8, 2);
-            $table->timestamps();
+            $table->unsignedInteger('nutrition_id');
+            $table->foreign('nutrition_id')->references('nutrition_id')->on('nutritions');
         });
     }
 
