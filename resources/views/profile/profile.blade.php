@@ -16,7 +16,7 @@
 
                     
 
-                    <div class="dark-link shadow p-3 mb-5 bg-white rounded">
+                    
          <h3>Welcome, {{ $user->username }}</h3>
           <form class="form-horizontal" action = "{{ route('profile') }}" method = "POST">
                {{ csrf_field() }}
@@ -72,7 +72,7 @@
           </div>
         </div>
      </form>
-    </div>
+    
                 </div>
             </div>
         </div>
