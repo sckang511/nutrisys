@@ -9,6 +9,6 @@ class Goal extends Model
     protected $primaryKey = 'goal_id';
 
     protected $fillable = [
-        'goal_id', 'user_id', 'goal_type', 'nutrition_type', 'value',
+        'goal_id', 'user_id', 'goal_type', 'value', 'nutrition_type',
     ];
 }

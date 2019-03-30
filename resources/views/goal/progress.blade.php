@@ -28,7 +28,7 @@
                             </tr>
                         @endforeach
                         @else
-                        <div class="col-md-4"><h1 class="text-danger">No data found</h1></div>
+                        <div class="col-md-4"><h4 class="text-danger">No data found</h4></div>
                         @endif
                     </tbody>
                 </table>
@@ -57,7 +57,6 @@
       ]);
 
       var options = {
-        title: 'Weekly Goal',
         curveType: 'function',
         legend: { position: 'bottom' }
       };
