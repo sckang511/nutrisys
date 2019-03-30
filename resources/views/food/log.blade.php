@@ -21,9 +21,9 @@
                                 <span>{{ date('l') . " " . date("Y/m/d") }}</span>
                             </li>
 
-                            <li class="food-log-table-dropdown">
+                            <li class="food-log-table-dropdown" id="breakfast">
                                     <span>Breakfast</span>
-                                    <div class="food-log-table-dropdown-submenu">
+                                    <div class="food-log-table-dropdown-submenu" id="breakfast-sub">
                                     <ul>
                                         <li>
                                         <a href="#">breakfast1</a>
@@ -35,9 +35,9 @@
                                     </div>
                             </li>     
                             
-                            <li class="food-log-table-dropdown">
+                            <li class="food-log-table-dropdown" id="lunch">
                                     <span>Lunch</span>
-                                    <div class="food-log-table-dropdown-submenu">
+                                    <div class="food-log-table-dropdown-submenu" id="lunch-sub">
                                     <ul>
                                         <li>
                                         <a href="#">lunch1</a>
@@ -49,9 +49,9 @@
                                     </div>
                             </li>           
 
-                            <li class="food-log-table-dropdown">
+                            <li class="food-log-table-dropdown" id="dinner">
                                     <span>Dinner</span>
-                                    <div class="food-log-table-dropdown-submenu">
+                                    <div class="food-log-table-dropdown-submenu" id="dinner-sub">
                                     <ul>
                                         <li>
                                         <a href="#">dinner1</a>
@@ -63,9 +63,9 @@
                                     </div>
                             </li>   
                             
-                            <li class="food-log-table-dropdown">
+                            <li class="food-log-table-dropdown" id="other">
                                     <span>Other</span>
-                                    <div class="food-log-table-dropdown-submenu">
+                                    <div class="food-log-table-dropdown-submenu" id="other-sub">
                                     <ul>
                                         <li>
                                         <a href="#">other1</a>
@@ -77,17 +77,10 @@
                                     </div>
                             </li>  
 
-                            <li class="food-log-table-dropdown">
+                            <li class="food-log-table-dropdown" id="snack">
                                     <span>Snack</span>
-                                    <div class="food-log-table-dropdown-submenu">
-                                    <ul>
-                                        <li>
-                                        <a href="#">snack1</a>
-                                        </li>
-                                        <li>
-                                        <a href="#">snack2</a>
-                                        </li>                
-                                    </ul>
+                                    <div class="food-log-table-dropdown-submenu" id="snack-sub">
+                                    
                                     </div>
                             </li>  
                         </ul>
@@ -95,19 +88,25 @@
 
 
                     <script>
-                    
-                    
-
-                        $(".food-log-table-dropdown").click(function() {
-                            $(".food-log-table-dropdown-submenu").slideToggle();            
-                        })
-
-
-
+                          
+                
+                        $("#breakfast").click(function() {
+                            $("#breakfast-sub").slideToggle();            
+                        });
+                        $("#lunch").click(function() {
+                            $("#lunch-sub").slideToggle();            
+                        });
+                        $("#dinner").click(function() {
+                            $("#dinner-sub").slideToggle();            
+                        });
+                        $("#other").click(function() {
+                            $("#other-sub").slideToggle();            
+                        });
+                        $("#snack").click(function() {
+                            $("#snack-sub").slideToggle();            
+                        });
 
                     </script>
-
-
 
                 </div>
             </div>
