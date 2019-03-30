@@ -33,9 +33,9 @@
                                             <div class="form-group">
                                                 <label class="control-label">Goal Type:</label>
                                                 <select class="form-control input-lg" name="goal_type">
-                                                    <option value="Carbohydrate">Daily</option>
-                                                    <option value="Calories">Weekly</option>
-                                                    <option value="Protein">Quarterly</option>
+                                                    <option value="Daily">Daily</option>
+                                                    <option value="Weekly">Weekly</option>
+                                                    <option value="Quarterly">Quarterly</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
