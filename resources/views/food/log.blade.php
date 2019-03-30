@@ -80,6 +80,8 @@
                             <li class="food-log-table-dropdown" id="snack">
                                     <span>Snack</span>
                                     <div class="food-log-table-dropdown-submenu" id="snack-sub">
+                                        <pre><img src="{{($nutrition != null) ? ($nutrition[0]->image) : ('#')}}"/>
+                                        </pre>
                                     
                                     </div>
                             </li>  
@@ -87,8 +89,7 @@
                     </div>
 
 
-                    <script>
-                          
+                    <script>                          
                 
                         $("#breakfast").click(function() {
                             $("#breakfast-sub").slideToggle();            
