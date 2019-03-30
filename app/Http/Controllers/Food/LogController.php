@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Food;
 
+use App\Nutrition;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class LogController extends Controller
      */
     public function index()
     {
-        return view('food.log');
+        $nutrition = Nutrition::all();
+        return view('food.log')->with('nutrition', $nutrition);
     }
 
     /**
