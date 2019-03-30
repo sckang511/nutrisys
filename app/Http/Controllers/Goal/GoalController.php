@@ -48,18 +48,20 @@ class GoalController extends Controller
 
         //Store in database
         $goal = new Goal;
-        $goal->user_id = $currentUser;
+        $uid = $currentUser->user_id;
+        $goal->user_id = $uid;
         $goal->nutrition_type = $request->preference;
         $goal->goal_type = $request->goal_type;
         $goal->value = $request->the_value;
         $goal->save();
 
-        if(validate()->fails()) {
-            Session::flash('error',"Error while adding the record!!");
-        }else {
-            Session::flash('success', 'Daily value has been succesfully set.');
-        }
-
+       //if($request->validate->fails()) {
+           // Session::flash('error',"Error while adding the record!!");
+        //}else {
+           // Session::flash('success', 'Daily value has been succesfully set.');
+        //}
+        
+        //Session::flash('success', 'Daily value has been succesfully set.');
         //Redirect to another page
        return redirect('goal')->with('goal', $goal);
     }
