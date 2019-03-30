@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Goal;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Goal;
+use App\User;
 
 class GoalController extends Controller
 {
@@ -37,19 +38,27 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
+        $currentUser = app('Illuminate\Contracts\Auth\Guard')->user();
         //Validate the data
         $this->validate($request, array(
             'preference' => 'required',
+            'goal_type' => 'required',
             'the_value' => 'required',
         ));
 
         //Store in database
         $goal = new Goal;
+        $goal->user_id = $currentUser;
         $goal->nutrition_type = $request->preference;
-        $goal->daily_value = $request->the_value;
+        $goal->goal_type = $request->goal_type;
+        $goal->value = $request->the_value;
         $goal->save();
 
-        //Session::flash('success', 'Daily value has been succesfully set.');
+        if(validate()->fails()) {
+            Session::flash('error',"Error while adding the record!!");
+        }else {
+            Session::flash('success', 'Daily value has been succesfully set.');
+        }
 
         //Redirect to another page
        return redirect('goal')->with('goal', $goal);
