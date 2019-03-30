@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Goal;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Goal;
+use App\User;
 
 class GoalController extends Controller
 {

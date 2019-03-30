@@ -13,8 +13,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    This is settings!
+                    
+                    <h3>Account Settings</h3>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="">Receive Occasional Emails</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="">Option 2</label>
+                    </div>
+                    <div class="checkbox disabled">
+                            <label><input type="checkbox" value="">Option 3</label>
+                    </div>
+                    
                 </div>
             </div>
         </div>

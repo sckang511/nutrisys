@@ -15,11 +15,10 @@ class CreateConsumableItemsTable extends Migration
     {
         Schema::create('consumable_items', function (Blueprint $table) {
             $table->increments('consumable_item_id');
-            $table->unsignedInteger('consumable_item_mapping_id');
-            $table->foreign('consumable_item_mapping_id')->references('consumable_item_mapping_id')->on('consumable_item_mappings');
-            $table->string('item_id');
-            $table->double('serving', 8, 2);
-            $table->timestamps();
+            $table->unsignedInteger('consumable_collection_id');
+            $table->foreign('consumable_collection_id')->references('consumable_collection_id')->on('consumable_collections');
+            $table->unsignedInteger('nutrition_id');
+            $table->foreign('nutrition_id')->references('nutrition_id')->on('nutritions');
         });
     }
 

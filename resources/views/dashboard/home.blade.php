@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <h2>Welcome to NutriSys!</h2>
                 </div>
             </div>
         </div>
