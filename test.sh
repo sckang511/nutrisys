@@ -6,16 +6,11 @@ php artisan migrate:fresh
 # get into tinker
 php artisan tinker
 
-# create a test user
-# username=tester
-# password=123123
-App\User::create(['user_id'=>99,'first_name'=>'Tester','last_name'=>'Testing','email'=>'test@test.com','username'=>'tester','password'=>'123123']);
-
 # create a goal for that user
-App\Goal::create(['goal_id'=>99, 'user_id'=>99,'goal_type'=>'Daily','nutrition_type'=>'Calories', 'value'=>'2000']);
+App\Goal::create(['user_id'=>1,'goal_type'=>'Daily','nutrition_type'=>'Calories', 'value'=>'2000']);
 
 # create a consumable log for that user
-App\Consumable_Log::create(['consumable_log_id'=>99,'user_id'=>99]);
+App\Consumable_Log::create(['user_id'=>1]);
 
 # create consumable collections
 App\Consumable_Collection::create(['consumable_collection_id'=>99,'consumable_log_id'=>99,'consumable_type'=>'Breakfast']);
