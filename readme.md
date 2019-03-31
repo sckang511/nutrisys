@@ -29,6 +29,19 @@ Thank you for contributing to Nutrisys project. Please take note of the followin
 5. Lastly, run 'php artisan key:generate' to generate a key for your project.
 6. You are now ready to contribute!
 
+
+## Testing
+
+* Laravel provides a tool called tinker that allows easy interaction with the database.
+* In order to create a large amount of mock data into the database you can use factory in tinker.
+
+1. From your project, run 'php artisan tinker'
+2. Create factory using the following syntax: factory(App\[Model]::class, [number])->create();
+3. For example, to create 20 data entries of new users: factory(App\User::class, 20)->create();
+4. I have created the models so that it creates entries with random attributes while obeying foreign key constraints.
+5. You can see/modify the implementation of factories in database/factories/ 
+
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
