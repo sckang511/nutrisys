@@ -38,7 +38,7 @@ Thank you for contributing to Nutrisys project. Please take note of the followin
 1. From your project, run 'php artisan tinker'
 2. Create factory using the following syntax: factory(App\[Model]::class, [number])->create();
 3. For example, to create 20 data entries of new users: factory(App\User::class, 20)->create();
-4. I have created the models so that it creates entries with random attributes while obeying foreign key constraints.
+4. I have created the factories so that it creates entries with random attributes while obeying foreign key constraints.
 5. You can see/modify the implementation of factories in database/factories/ 
 
 
