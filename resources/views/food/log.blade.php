@@ -26,10 +26,8 @@
                                     <div class="food-log-table-dropdown-submenu" id="breakfast-sub">
                                     <ul>
                                         <li>
-                                        <a href="#">breakfast1</a>
                                         </li>
                                         <li>
-                                        <a href="#">breakfast2</a>
                                         </li>                
                                     </ul>
                                     </div>
@@ -40,10 +38,8 @@
                                     <div class="food-log-table-dropdown-submenu" id="lunch-sub">
                                     <ul>
                                         <li>
-                                        <a href="#">lunch1</a>
                                         </li>
                                         <li>
-                                        <a href="#">lunch2</a>
                                         </li>                
                                     </ul>
                                     </div>
@@ -54,10 +50,8 @@
                                     <div class="food-log-table-dropdown-submenu" id="dinner-sub">
                                     <ul>
                                         <li>
-                                        <a href="#">dinner1</a>
                                         </li>
                                         <li>
-                                        <a href="#">dinner2</a>
                                         </li>                
                                     </ul>
                                     </div>
@@ -68,10 +62,8 @@
                                     <div class="food-log-table-dropdown-submenu" id="other-sub">
                                     <ul>
                                         <li>
-                                        <a href="#">other1</a>
                                         </li>
                                         <li>
-                                        <a href="#">other2</a>
                                         </li>                
                                     </ul>
                                     </div>
@@ -80,8 +72,6 @@
                             <li class="food-log-table-dropdown" id="snack">
                                     <span>Snack</span>
                                     <div class="food-log-table-dropdown-submenu" id="snack-sub">
-                                        <pre><img src="{{($nutrition != null) ? ($nutrition[0]->image) : ('#')}}"/>
-                                        </pre>
                                     
                                     </div>
                             </li>  

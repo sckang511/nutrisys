@@ -9,6 +9,7 @@ class Nutrition extends Model
     protected $table = 'nutritions';
 
     protected $primaryKey = 'nutrition_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'nutrition_id', 'item_id', 'item_name', 'serving_qty', 'serving_unit',

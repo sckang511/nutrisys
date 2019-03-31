@@ -13,15 +13,13 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
-    static $password;
+$factory->define(App\Consumable_Item::class, function (Faker $faker) {
+
+    $collection_pool = sizeof(App\Consumable_Collection::all()) - 1;
+    $nutrition_pool = sizeof(App\Nutrition::all()) -1;
 
     return [
-        'first_name' => $faker->name,
-        'last_name' => $faker->name,
-        'username' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'consumable_collection_id' => rand(1, $collection_pool),
+        'nutrition_id' => rand(1, $nutrition_pool),
     ];
 });
