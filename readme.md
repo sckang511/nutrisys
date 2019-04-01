@@ -41,6 +41,13 @@ Thank you for contributing to Nutrisys project. Please take note of the followin
 4. I have created the factories so that it creates entries with random attributes while obeying foreign key constraints.
 5. You can see/modify the implementation of factories in database/factories/ 
 
+* This is a valid sample sequence of factory cmds for testing:
+
+    factory(App\User::class, 1)->create();                     
+    factory(App\Goal::class, 5)->create();                     
+    factory(App\Consumable_Collection::class, 20)->create();   
+    factory(App\Nutrition::class, 20)->create();
+    factory(App\Consumable_Item::class, 20)->create();
 
 ## License
 

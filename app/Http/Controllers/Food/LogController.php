@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Food;
 
+use Illuminate\Support\Facades\Auth;
 use App\Nutrition;
+use App\Consumable_Collection;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 
 class LogController extends Controller
 {
@@ -16,10 +19,16 @@ class LogController extends Controller
     public function index()
     {
         // get the current user id
+        $current_user = Auth::user()->id;
 
         // get todays date
-    
+        $today = date('Y-m-d');
+
         // get all the collections where the date is today
+        $collections = Consumable_Collection::where('date', $today)->get();
+
+        //test
+        echo "<pre>                                   $collections is the collections </pre>";
 
         // from above collections sort by collection type: breakfast ...etc
 
