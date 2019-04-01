@@ -46,7 +46,7 @@ Thank you for contributing to Nutrisys project. Please take note of the followin
     factory(App\User::class, 1)->create();                     
     factory(App\Goal::class, 5)->create();                     
     factory(App\Consumable_Collection::class, 20)->create();   
-    factory(App\Nutrition::class, 20)->create();
+    factory(App\Nutrition::class, 20)->create();    
     factory(App\Consumable_Item::class, 20)->create();
 
 ## License
