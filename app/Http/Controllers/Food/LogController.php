@@ -15,6 +15,21 @@ class LogController extends Controller
      */
     public function index()
     {
+        // get the current user id
+
+        // get todays date
+    
+        // get all the collections where the date is today
+
+        // from above collections sort by collection type: breakfast ...etc
+
+        // for every collection I have, I need to search for items that match the coll id
+
+        // for every item, I need to get nutrition info to display
+
+        // 
+
+
         $nutrition = Nutrition::all();
         return view('food.log')->with('nutrition', $nutrition);
     }

@@ -42,6 +42,7 @@ $factory->define(App\Nutrition::class, function (Faker $faker) {
     return [
         'item_id' => $id,
         'item_name' => $string,
+        'item_image' => 'https://queal.com/bootstrap-pages/images/diet.png',
         'serving_qty' => rand(1, 10),
         'serving_unit' => 'oz',
         'calorie' => rand(100, 1000),
