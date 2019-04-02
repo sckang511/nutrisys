@@ -39,6 +39,8 @@ $factory->define(App\Consumable_Collection::class, function (Faker $faker) {
         break;
     }
 
+    date_default_timezone_set('America/Chicago');
+
     return [
         'user_id' => rand(1, $user_pool),
         'date' => now(),
