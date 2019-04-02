@@ -18,7 +18,6 @@ class CreateNutritionsTable extends Migration
             $table->string('item_id');
             $table->string('item_name');
             $table->string('item_image')->nullable();
-            $table->string('image')->nullable();
             $table->double('serving_qty', 8, 2)->nullable();
             $table->string('serving_unit')->nullable();
             $table->double('calorie', 8, 2)->nullable();
