@@ -23,6 +23,7 @@ class LogController extends Controller
         $current_user = Auth::user()->id;
 
         // get todays date
+        date_default_timezone_set('America/Chicago');
         $today = date('Y-m-d');
         $tomorrow = date('Y-m-d', strtotime('tomorrow'));
 
@@ -99,7 +100,7 @@ class LogController extends Controller
         $other_objects = array();
         $snack_objects = array();
 
-        for($i = 0; $i < sizeof($breakfast_items) - 1; $i++) {
+        for($i = 0; $i < sizeof($breakfast_items); $i++) {
             $id = $breakfast_items[$i]['nutrition_id'];
             $builder = Nutrition::where('nutrition_id', '=', $id)->get()->toarray();
             $info = $builder[0];
@@ -107,15 +108,48 @@ class LogController extends Controller
                 $breakfast_items[$i]['consumable_item_id'] => $info,
             );
         }
+        for($i = 0; $i < sizeof($lunch_items); $i++) {
+            $id = $lunch_items[$i]['nutrition_id'];
+            $builder = Nutrition::where('nutrition_id', '=', $id)->get()->toarray();
+            $info = $builder[0];
+            $lunch_objects += array(
+                $lunch_items[$i]['consumable_item_id'] => $info,
+            );
+        }
+        for($i = 0; $i < sizeof($dinner_items); $i++) {
+            $id = $dinner_items[$i]['nutrition_id'];
+            $builder = Nutrition::where('nutrition_id', '=', $id)->get()->toarray();
+            $info = $builder[0];
+            $dinner_objects += array(
+                $dinner_items[$i]['consumable_item_id'] => $info,
+            );
+        }
+        for($i = 0; $i < sizeof($other_items); $i++) {
+            $id = $other_items[$i]['nutrition_id'];
+            $builder = Nutrition::where('nutrition_id', '=', $id)->get()->toarray();
+            $info = $builder[0];
+            $other_objects += array(
+                $other_items[$i]['consumable_item_id'] => $info,
+            );
+        }
+        for($i = 0; $i < sizeof($snack_items); $i++) {
+            $id = $snack_items[$i]['nutrition_id'];
+            $builder = Nutrition::where('nutrition_id', '=', $id)->get()->toarray();
+            $info = $builder[0];
+            $snack_objects += array(
+                $snack_items[$i]['consumable_item_id'] => $info,
+            );
+        }
 
-        // TO:DO:: I am losing one breakfast item id 25 for some reason. need to figure it out
+        $results = array(
+            "Breakfast" => $breakfast_objects,
+            "Lunch" => $lunch_objects,
+            "Dinner" => $dinner_objects,
+            "Other" => $other_objects,
+            "Snack" => $snack_objects,
+        );
 
-        $size = sizeof($breakfast_items);
-        printf("<pre>                                                $size Breakfast object");
-        print_r($breakfast_objects);
-        printf("</pre>");
-        return view('food.log');
-        //return view('food.log')->with('nutrition', $nutrition);
+        return view('food.log')->with('results', $results);
     }
 
     /**
