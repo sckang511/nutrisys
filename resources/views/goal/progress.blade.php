@@ -22,9 +22,9 @@
                         @foreach ($goals as $data)
                             <tr>
                             <th scope="row">{{ $data->nutrition_type}}</th>
-                            <td><progress value="{{ $data->daily_value}}" max="{{ $data->recomended_value}}"></progress>&emsp;&emsp;{{ (($data->daily_value)/($data->recomended_value) * 100)}}%</td>
-                            <td>{{ $data->daily_value}}g</td>
-                            <td>{{ $data->recomended_value}}g</td>
+                            <td><progress value="{{ $data->value}}" max="3000"></progress>&emsp;&emsp;{{ number_format(((($data->value)/3000) * 100), 0, '.','')}}%</td>
+                            <td>{{ $data->value}}g</td>
+                            <td>3000g</td>
                             </tr>
                         @endforeach
                         @else
