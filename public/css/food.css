@@ -13,15 +13,17 @@
 
 .food-log-table-header {
     border-bottom: 1px solid gray;
+    font-size: x-large;
 }
 
 .food-log-table-dropdown {
     border-bottom: 1px solid gray;
     cursor: pointer;
+    padding: 15px;
 }
 
 .food-log-table-dropdown:hover {
-    color: gainsboro;
+    color: black;
 }
 
 .food-log-table-dropdown-submenu {
