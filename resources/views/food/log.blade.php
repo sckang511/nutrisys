@@ -15,7 +15,7 @@
                     @endif
 
 
-                    <div class="food-log-table">
+                    <div class="food-log-table" id="log-content">
                         <ul class="food-log-table-ul">
                             <li class="food-log-table-header">
                                 <span>{{ date('l') . " " . date("Y/m/d") }}</span>
@@ -35,7 +35,8 @@
                                                     <span style="float:left;">Calories: {{$breakfast['calorie']}}</span>
                                                     <span style="float:left;">Carbohydrates: {{$breakfast['carbohydrate']}}</span>
                                                     <span style="float:left;">Protein: {{$breakfast['protein']}}</span>
-                                                    <button type='button' class='btn btn-info' style='float:left;'>View Details</button>
+                                                    <?php $info = json_encode($breakfast); ?>
+                                                    <button type="button" class="btn btn-info" style="float:left;" onclick='viewDetails(<?php echo $info; ?>)'>View Details</button>
                                                 </pre>
                                                 
                                             @endforeach
@@ -59,7 +60,9 @@
                                                     <span style="float:left;">Calories: {{$lunch['calorie']}}</span>
                                                     <span style="float:left;">Carbohydrates: {{$lunch['carbohydrate']}}</span>
                                                     <span style="float:left;">Protein: {{$lunch['protein']}}</span>
-                                                    <button type='button' class='btn btn-info' style='float:left;'>View Details</button>
+                                                    <?php $info = json_encode($lunch); ?>
+                                                    <button type="button" class="btn btn-info" style="float:left;" onclick='viewDetails(<?php echo $info; ?>)'>View Details</button>
+                                               
                                                 </pre>
                                                 
                                             @endforeach
@@ -82,7 +85,9 @@
                                                     <span style="float:left;">Calories: {{$dinner['calorie']}}</span>
                                                     <span style="float:left;">Carbohydrates: {{$dinner['carbohydrate']}}</span>
                                                     <span style="float:left;">Protein: {{$dinner['protein']}}</span>
-                                                    <button type='button' class='btn btn-info' style='float:left;'>View Details</button>
+                                                    <?php $info = json_encode($dinner); ?>
+                                                    <button type="button" class="btn btn-info" style="float:left;" onclick='viewDetails(<?php echo $info; ?>)'>View Details</button>
+                                               
                                                 </pre>
                                                 
                                             @endforeach
@@ -106,7 +111,9 @@
                                                     <span style="float:left;">Calories: {{$other['calorie']}}</span>
                                                     <span style="float:left;">Carbohydrates: {{$other['carbohydrate']}}</span>
                                                     <span style="float:left;">Protein: {{$other['protein']}}</span>
-                                                    <button type='button' class='btn btn-info' style='float:left;'>View Details</button>
+                                                    <?php $info = json_encode($other); ?>
+                                                    <button type="button" class="btn btn-info" style="float:left;" onclick='viewDetails(<?php echo $info; ?>)'>View Details</button>
+                                               
                                                 </pre>
                                                 
                                             @endforeach
@@ -129,7 +136,9 @@
                                                     <span style="float:left;">Calories: {{$snack['calorie']}}</span>
                                                     <span style="float:left;">Carbohydrates: {{$snack['carbohydrate']}}</span>
                                                     <span style="float:left;">Protein: {{$snack['protein']}}</span>
-                                                    <button type='button' class='btn btn-info' style='float:left;'>View Details</button>
+                                                    <?php $info = json_encode($snack); ?>
+                                                    <button type="button" class="btn btn-info" style="float:left;" onclick='viewDetails(<?php echo $info; ?>)'>View Details</button>
+                                               
                                                 </pre>
                                                 
                                             @endforeach
@@ -141,8 +150,8 @@
                     </div>
 
 
-                    <script>                          
-                
+                    <script>         
+                          
                         $("#breakfast").click(function() {
                             $("#breakfast-sub").slideToggle();            
                         });
@@ -158,6 +167,25 @@
                         $("#snack").click(function() {
                             $("#snack-sub").slideToggle();            
                         });
+
+                        $("document").ready(function() {
+                            $("#breakfast").click();
+                            $("#lunch").click();
+                            $("#dinner").click();
+                            $("#other").click();
+                            $("#snack").click();
+                        });
+
+                        function viewDetails(info) {
+                            var div = document.getElementById('log-content');
+                            var content = "<pre>" + JSON.stringify(info, null, 2);
+                            content += "<br><button class='btn btn-info' onclick='reload()'>Back</button></pre>";
+                            div.innerHTML = content;
+                        }
+
+                        function reload() {
+                            location.reload();
+                        }
 
                     </script>
 
