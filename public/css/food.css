@@ -28,10 +28,13 @@
 
 .food-log-table-dropdown-submenu {
     transition: opacity .8s ease-in-out;
+    margin-top: 15px;
 }
 
 .food-log-table-dropdown-submenu ul {
     padding-inline-start: 5%;
     list-style-type: none;
     background-color: gainsboro;
+    padding: 15px;
 }
+
