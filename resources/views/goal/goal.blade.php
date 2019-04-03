@@ -46,12 +46,12 @@
                                 </form>
                             </div>
                         </div>
+                    </div>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
-                                @include('message/message')
+                                <h3>@include('message/message')</h3>
                             </div>
                         </div>
-                    </div>
                 </div><br><br>
             </div>
         </div>

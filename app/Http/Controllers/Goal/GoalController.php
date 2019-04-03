@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Goal;
 
+use Symfony\Component\HttpFoundation\Session\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Goal;
 use App\User;
 use Auth;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class GoalController extends Controller
 {
@@ -60,7 +60,7 @@ class GoalController extends Controller
         //Session::flash('success', 'Daily value has been succesfully set.');
 
         //Redirect to another page
-       return redirect('goal')->with('goal', $goal);
+       return redirect('goal')->with('goal', $goal)->with('success', 'Daily value has been succesfully set.');
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Profile;
 
+use Symfony\Component\HttpFoundation\Session\Session;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
@@ -60,7 +61,7 @@ class ProfileController extends Controller
         $user->gender = $request->gender;
         $user->save();
         
-        return view('profile.profile')->with('user',$user);
+        return view('profile.profile')->with('user',$user)->with('success', 'Profile updated.');
     }
 
     /**
