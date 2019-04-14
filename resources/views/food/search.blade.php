@@ -115,7 +115,7 @@ function makeCards(object, resultType) {
 
 
                     } else {
-                        div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewBrandedDetails()'>View Branded Details</button>";
+                        div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='getBrandedDetails(\"" + object["nix_item_id"] + "\")'>View Branded Details</button>";
                     }
                     
     return div;
@@ -182,9 +182,64 @@ $.ajax({
     }
 
 
-function getBrandedDetails() {
-   //textinput.value = '';
+function getBrandedDetails(itemID) {
+    //textinput.value = '';
     //alert("Branded");
+    // make the new api call
+var brandedRequest = "https://trackapi.nutritionix.com/v2/search/item?nix_item_id=";
+// retrieve results and send to viewNutritionDetails for display
+
+
+$.ajax({
+            url: brandedRequest + itemID,
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+                "x-remote-user-id": "0",
+            },
+            /*
+            data: JSON.stringify({ "query": foodName }),
+            headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+            },
+            headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+            },
+            headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+            },*/
+            success: function (data) {
+                //alert(data);
+                var resultsdiv = document.getElementById("search_results");
+                resultsdiv.style.display = "block";
+                resultsdiv.innerHTML = "";
+
+                var nutritionArray = data["foods"];
+
+
+                if (nutritionArray != null) {
+                    //for (i = 0; i < nutritionArray.length; i++) {
+                        console.log(nutritionArray);
+                        var div = viewNutritionDetails(nutritionArray);
+                      //  resultsdiv.appendChild(div);                        
+                  //  }
+                }
+ 
+                response = JSON.stringify(data, null, "  ");
+                //document.getElementById("search_results").innerHTML = response;
+                //console.log(data);
+            },
+            error: function (data) {
+                alert(JSON.stringify(data));
+                $('#search_results').html(data);
+            }
+        });
+
 }
 
 
