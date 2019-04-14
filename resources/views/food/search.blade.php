@@ -245,11 +245,11 @@ $.ajax({
 
 function viewNutritionDetails(nutritionInfo) {
     var resultsdiv = document.getElementById("search_results");
-   textinput.value = '';
-   // echo "Common";
-   //alert("Common Details - Food Name:" + foodName);
-   //alert("Common Details");
-   alert("View Nutrition Details" + nutritionInfo);
+    textinput.value = '';
+    // echo "Common";
+    //alert("Common Details - Food Name:" + foodName);
+    //alert("Common Details");
+    //alert("View Nutrition Details" + nutritionInfo);
    var div = document.createElement('pre');
     div.className = "pre-food";
     //div.innerHTML = "<h1>It worked</h1>";
