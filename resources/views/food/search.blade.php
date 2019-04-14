@@ -75,7 +75,7 @@
                 if (commonArray != null) {
                     for (i = 0; i < commonArray.length; i++) {
                         console.log(commonArray[i]);
-                        var div = makeCards(commonArray[i]);
+                        var div = makeCards(commonArray[i], "common");
                         resultsdiv.appendChild(div);                        
                     }
                 }
@@ -83,7 +83,7 @@
                 if (brandedArray != null) {
                     for (i = 0; i < brandedArray.length; i++) {
                         console.log(brandedArray[i]);
-                        var div = makeCards(brandedArray[i]);
+                        var div = makeCards(brandedArray[i], "branded");
                         resultsdiv.appendChild(div);                        
                     }
                 }
@@ -98,7 +98,7 @@
         });
     })
 
-function makeCards(object) {
+function makeCards(object, resultType) {
 
     var div = document.createElement('pre');
     div.className = "pre-food";
@@ -107,10 +107,126 @@ function makeCards(object) {
                     "\nfood locale: " + object["locale"] + 
                     "\nserving unit: " + object["serving_unit"] +
                     "\nserving qty: " + object["serving_qty"] +
-                    "\n<button type='button' class='btn btn-info' style='margin-top: 10px;'>Add</button>" +
-                    "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px'>View Details</button>";
+                    "\n<button type='button' class='btn btn-info' style='margin-top: 10px;'>Add</button>";
+                    if(resultType == "common"){
+                        //div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewCommonDetails(" + object["food_name"] + ")'>View Common Details</button>";
+                       // div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewCommonDetails(\"" + object["food_name"] + "\")'>View Common Details</button>";
+                        div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='getCommonDetails(\"" + object["food_name"] + "\")'>View Common Details</button>";
+
+
+                    } else {
+                        div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewBrandedDetails()'>View Branded Details</button>";
+                    }
+                    
     return div;
 }
+
+function getCommonDetails(foodName){
+// make the new api call
+var commonRequest = "https://trackapi.nutritionix.com/v2/natural/nutrients/";
+// retrieve results and send to viewNutritionDetails for display
+
+
+$.ajax({
+            url: commonRequest,
+            type: 'POST',
+            dataType: 'json',
+            headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+                "x-remote-user-id": "0",
+            },
+            data: {
+                "query": foodName,
+            },
+            /*
+            data: JSON.stringify({ "query": foodName }),
+            headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+            },
+            headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+            },
+            headers: {
+                "x-app-id": "bbed59ef",
+                "x-app-key": "c5e390e2bb4e9012ac02c93ffed211d9",
+            },*/
+            success: function (data) {
+                //alert(data);
+                var resultsdiv = document.getElementById("search_results");
+                resultsdiv.style.display = "block";
+                resultsdiv.innerHTML = "";
+
+                var nutritionArray = data["foods"];
+
+
+                if (nutritionArray != null) {
+                    //for (i = 0; i < nutritionArray.length; i++) {
+                        console.log(nutritionArray);
+                        var div = viewNutritionDetails(nutritionArray);
+                      //  resultsdiv.appendChild(div);                        
+                  //  }
+                }
+ 
+                response = JSON.stringify(data, null, "  ");
+                //document.getElementById("search_results").innerHTML = response;
+                //console.log(data);
+            },
+            error: function (data) {
+                alert(JSON.stringify(data));
+                $('#search_results').html(data);
+            }
+        });
+    }
+
+
+function getBrandedDetails() {
+   //textinput.value = '';
+    //alert("Branded");
+}
+
+
+function viewNutritionDetails(nutritionInfo) {
+    var resultsdiv = document.getElementById("search_results");
+   textinput.value = '';
+   // echo "Common";
+   //alert("Common Details - Food Name:" + foodName);
+   //alert("Common Details");
+   alert("View Nutrition Details" + nutritionInfo);
+   var div = document.createElement('pre');
+    div.className = "pre-food";
+    //div.innerHTML = "<h1>It worked</h1>";
+    resultsdiv.innerHTML = '';
+    
+    div.innerHTML = "image: <img src='" + nutritionInfo[0]["photo"]["thumb"] + "' width='100' height='100'>" +
+                    "\nfood name: " + nutritionInfo[0]["food_name"] + 
+                    "\nserving unit: " + nutritionInfo[0]["serving_unit"] +
+                    "\nserving qty: " + nutritionInfo[0]["serving_qty"] +
+                    "\ncalories: " + nutritionInfo[0]["nf_calories"] +
+                    "\ntotal fat: " + nutritionInfo[0]["nf_total_fat"] +
+                    "\nsaturated fat: " + nutritionInfo[0]["nf_saturated_fat"] +
+                    "\ncholesterol: " + nutritionInfo[0]["nf_cholesterol"] +
+                    "\nsodium: " + nutritionInfo[0]["nf_sodium"] +
+                    "\ntotal carbohydrates: " + nutritionInfo[0]["nf_total_carbohydrate"] +
+                    "\ndietary fiber: " + nutritionInfo[0]["nf_dietary_fiber"] +
+                    "\nsugars: " + nutritionInfo[0]["nf_sugars"] +
+                    "\nprotein: " + nutritionInfo[0]["nf_protein"] +
+                    "\npotassium: " + nutritionInfo[0]["nf_potassium"] +
+                    "\n<button type='button' class='btn btn-info' style='margin-top: 10px;'>Add</button>";
+                    /*if(resultType == "common"){
+                        //div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewCommonDetails(" + object["food_name"] + ")'>View Common Details</button>";
+                        div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewCommonDetails(\"" + object["food_name"] + "\")'>View Common Details</button>";
+
+                    } else {
+                        div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewBrandedDetails()'>View Branded Details</button>";
+                    }*/
+                   
+   // return div;
+   resultsdiv.appendChild(div);
+}
+
 
 </script>
 
