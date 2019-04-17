@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    This is recipe!
+                    <h3>Build your own nutrition recipe!</h3>
+
                 </div>
             </div>
         </div>
