@@ -25,6 +25,7 @@ class RecipeController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -36,6 +37,31 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, array(
+        'serving_qty' => 'double', 'serving_unit' => 'string',
+        'calorie' => 'double', 'total_fat' => 'double', 'saturated_fat' => 'double', 
+        'cholesterol' => 'double', 'sodium' => 'double',
+        'carbohydrate' => 'double', 'dietary_fiber' => 'double', 'sugar' => 'double', 
+        'protein' => 'double', 'potassium' => 'double',
+        ));
+
+        $newRecipe = new Nutrition;
+        $newRecipe->item_id = Auth::user()->username;
+        $newRecipe->serving_unit = $request->serving_unit;
+        $newRecipe->serving_qty = $request->serving_qty;
+        $newRecipe->calorie = $request->calorie;
+        $newRecipe->total_fat = $request->total_fat;
+        $newRecipe->saturated_fat = $request->saturated_fat;
+        $newRecipe->cholesterol = $request->cholesterol;
+        $newRecipe->sodium = $request->sodium;
+        $newRecipe->carbohydrate = $request->carbohydrate;
+        $newRecipe->dietary_fiber = $request->dietary_fiber;
+        $newRecipe->sugar = $request->sugar;
+        $newRecipe->protein = $request->protein;
+        $newRecipe->potassium = $request->potassium;
+        $newRecipe->save();
+
+        return redirect('food.recipe')->with('success', 'A new recipe was added.');
     }
 
     /**

@@ -36,6 +36,21 @@
                           <tbody>
                               <tr>
                               
+                                <td>Profile Image: </td>
+                                <td><img class="rounded-circle" src="/storage/avatars/{{ $user->profile_picture }}" /></td>
+                                
+                              
+                              </tr>
+                              <tr>
+                              
+                                <td>Add New Image</td>
+                                <td><input type="file" class="form-control-file" name="profile_picture" id="avatarFile" aria-describedby="fileHelp">
+                                <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small></td>
+                              
+                              </tr>
+                              <tr>
+                              <tr>
+                              
                                 <td>Username: </td>
                                 <td><input class="form-control input-lg" type="text" name="username" value="{{ $user->username }}"></td>
                                 
