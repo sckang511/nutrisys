@@ -1,7 +1,5 @@
 <?php
-
 use Faker\Generator as Faker;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -12,12 +10,9 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
 $factory->define(App\Consumable_Item::class, function (Faker $faker) {
-
     $collection_pool = sizeof(App\Consumable_Collection::all()) - 1;
     $nutrition_pool = sizeof(App\Nutrition::all()) -1;
-
     return [
         'consumable_collection_id' => rand(1, $collection_pool),
         'nutrition_id' => rand(1, $nutrition_pool),

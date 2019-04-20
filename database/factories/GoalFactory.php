@@ -1,7 +1,5 @@
 <?php
-
 use Faker\Generator as Faker;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -12,9 +10,7 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
 $factory->define(App\Goal::class, function (Faker $faker) {
-
     $user_pool = sizeof(App\User::all()) - 1;
     $count = rand(1, 3);
     $string = 'calorie';
@@ -35,8 +31,6 @@ $factory->define(App\Goal::class, function (Faker $faker) {
             $string = 'sodium';
             break;
     }   
-
-
     return [
         'user_id' => rand(1, $user_pool),
         'goal_type' => $string2,

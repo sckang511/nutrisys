@@ -1,20 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container shadow-sm p-3 mb-5 bg-white rounded">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Recipe</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
+        <div class="col-md-10">
+            <div class="text-left" style="margin-top: 20px;">
+                <div class="page-header text-info">
+                    <h1>RECIPE</h1>
+                </div><br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            <h2>Something</h2>
                         </div>
-                    @endif
-
-                    This is recipe!
+                    </div>
                 </div>
             </div>
         </div>

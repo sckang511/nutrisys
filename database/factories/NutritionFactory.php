@@ -1,7 +1,5 @@
 <?php
-
 use Faker\Generator as Faker;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -12,9 +10,7 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
 $factory->define(App\Nutrition::class, function (Faker $faker) {
-
     $id = '5ab0b2008739ed2bf27a98';
     $string = 'steak';
     $random = rand(1, 5);
@@ -38,7 +34,6 @@ $factory->define(App\Nutrition::class, function (Faker $faker) {
         $string = 'cake';
         break;
     }
-
     return [
         'item_id' => $id,
         'item_name' => $string,
