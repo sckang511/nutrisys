@@ -254,21 +254,31 @@ function viewNutritionDetails(nutritionInfo) {
     div.className = "pre-food";
     //div.innerHTML = "<h1>It worked</h1>";
     resultsdiv.innerHTML = '';
-    
-    div.innerHTML = "image: <img src='" + nutritionInfo[0]["photo"]["thumb"] + "' width='100' height='100'>" +
-                    "\nfood name: " + nutritionInfo[0]["food_name"] + 
-                    "\nserving unit: " + nutritionInfo[0]["serving_unit"] +
-                    "\nserving qty: " + nutritionInfo[0]["serving_qty"] +
-                    "\ncalories: " + nutritionInfo[0]["nf_calories"] +
-                    "\ntotal fat: " + nutritionInfo[0]["nf_total_fat"] +
-                    "\nsaturated fat: " + nutritionInfo[0]["nf_saturated_fat"] +
-                    "\ncholesterol: " + nutritionInfo[0]["nf_cholesterol"] +
-                    "\nsodium: " + nutritionInfo[0]["nf_sodium"] +
-                    "\ntotal carbohydrates: " + nutritionInfo[0]["nf_total_carbohydrate"] +
-                    "\ndietary fiber: " + nutritionInfo[0]["nf_dietary_fiber"] +
-                    "\nsugars: " + nutritionInfo[0]["nf_sugars"] +
-                    "\nprotein: " + nutritionInfo[0]["nf_protein"] +
-                    "\npotassium: " + nutritionInfo[0]["nf_potassium"] +
+        var fiber = ((nutritionInfo[0]["nf_dietary_fiber"] != null) ? nutritionInfo[0]["nf_dietary_fiber"] : '0');
+        var potassium = ((nutritionInfo[0]["nf_potassium"] != null) ? nutritionInfo[0]["nf_potassium"] : '0');
+        var sugars = ((nutritionInfo[0]["nf_sugars"] != null) ? nutritionInfo[0]["nf_sugars"] : '0');
+    div.innerHTML = "<img src='" + nutritionInfo[0]["photo"]["thumb"] + "' width='100' height='100'>" +
+                    "\nFood Name: " + nutritionInfo[0]["food_name"] + 
+                    "\nServing Unit: " + nutritionInfo[0]["serving_unit"] +
+                    //"\nserving qty: " + nutritionInfo[0]["serving_qty"] +
+                    "\nServing Quantity: <input type='text' id='serving_qty' maxlength='2' size='2'>" +
+                    "\nCalories: " + nutritionInfo[0]["nf_calories"] +
+                    "\nTotal Fat: " + nutritionInfo[0]["nf_total_fat"] + "g" +
+                    "\nSaturated Fat: " + nutritionInfo[0]["nf_saturated_fat"] + "g" +
+                    "\nCholesterol: " + nutritionInfo[0]["nf_cholesterol"] + "mg" +
+                    "\nSodium: " + nutritionInfo[0]["nf_sodium"] + "mg" +
+                    "\nTotal Carbohydrates: " + nutritionInfo[0]["nf_total_carbohydrate"] + "g" +
+                    //"\nDietary Fiber: " + nutritionInfo[0]["nf_dietary_fiber"] + "g" +
+                    "\nDietary Fiber: " + fiber + "g" +
+                    "\nSugars: " + sugars + "g" +
+                    "\nProtein: " + nutritionInfo[0]["nf_protein"] + "g" +
+                    "\nPotassium: " + potassium + "mg" +
+                    "\nMeal: <select id='consumable_type'>  <option value='Breakfast'>Breakfast</option>" +
+                    "<option value='Lunch'>Lunch</option>" +
+                    "<option value='Dinner'>Dinner</option>" +
+                    "<option value='Snack'>Snack</option>" +
+                    "<option value='Other'>Other</option>" +
+                    "</select>" +
                     "\n<button type='button' class='btn btn-info' style='margin-top: 10px;'>Add</button>";
                     /*if(resultType == "common"){
                         //div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewCommonDetails(" + object["food_name"] + ")'>View Common Details</button>";
