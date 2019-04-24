@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Food;
 
 use App\Http\Controllers\Controller;
+use App\Nutrition;
+use Auth;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -38,15 +40,16 @@ class RecipeController extends Controller
     {
         //
         $this->validate($request, array(
-        'serving_qty' => 'double', 'serving_unit' => 'string',
-        'calorie' => 'double', 'total_fat' => 'double', 'saturated_fat' => 'double', 
-        'cholesterol' => 'double', 'sodium' => 'double',
-        'carbohydrate' => 'double', 'dietary_fiber' => 'double', 'sugar' => 'double', 
-        'protein' => 'double', 'potassium' => 'double',
+        'serving_qty' => 'numeric', 'serving_unit' => 'string',
+        'calorie' => 'numeric', 'total_fat' => 'numeric', 'saturated_fat' => 'numeric', 
+        'cholesterol' => 'numeric', 'sodium' => 'numeric',
+        'carbohydrate' => 'numeric', 'dietary_fiber' => 'numeric', 'sugar' => 'numeric', 
+        'protein' => 'numeric', 'potassium' => 'numeric',
         ));
 
         $newRecipe = new Nutrition;
         $newRecipe->item_id = Auth::user()->username;
+        $newRecipe->item_name = $request->item_name;
         $newRecipe->serving_unit = $request->serving_unit;
         $newRecipe->serving_qty = $request->serving_qty;
         $newRecipe->calorie = $request->calorie;
@@ -61,7 +64,7 @@ class RecipeController extends Controller
         $newRecipe->potassium = $request->potassium;
         $newRecipe->save();
 
-        return redirect('food.recipe')->with('success', 'A new recipe was added.');
+        return view('food.recipe')->with('success', 'A new recipe was added.');
     }
 
     /**

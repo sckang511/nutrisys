@@ -50,7 +50,7 @@
         </div>
         <div class="sidebar-header">
             <div class="user-pic">
-            <img class="img-responsive img-rounded" src="/storage/avatars/{{ Auth::user()->profile_picture }}"
+            <img class="img-responsive img-rounded" src="{{ asset('images/user.jpg') }}"
             alt="User picture">
             </div>
             <div class="user-info">

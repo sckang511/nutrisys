@@ -24,7 +24,7 @@
                     </div>
                   @endif-->
 
-                  <form class="form-horizontal" action = "{{ route('profile') }}" method = "POST">
+                  <form class="form-horizontal" action = "{{ route('profile') }}" method = "POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
                     <table class="table">
                       <thead>

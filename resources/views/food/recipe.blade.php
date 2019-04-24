@@ -16,7 +16,7 @@
 
                     <h3>Build your own nutrition recipe!</h3>
 
-                    <form class="form-horizontal" action = "{{ route('profile') }}" method = "POST">
+                    <form class="form-horizontal" action = "{{ route('recipe') }}" method = "POST">
                       {{ csrf_field() }}
                     <table class="table">
                       <thead>
