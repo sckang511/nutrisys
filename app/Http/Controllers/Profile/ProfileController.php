@@ -48,6 +48,7 @@ class ProfileController extends Controller
             'weight' => 'required|integer',
             'birthdate' => 'required|date',
             'phone' => 'required|string|max:255',
+            'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         
         $user = Auth::User();
@@ -59,6 +60,9 @@ class ProfileController extends Controller
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->gender = $request->gender;
+        $avatarName = $user->id.'_avatar'.time().'.'.request()->profile_picture->getClientOriginalExtension();
+        $request->profile_picture->storeAs('avatars',$avatarName);
+        $user->profile_picture = $avatarName;
         $user->save();
         
         return view('profile.profile')->with('user',$user)->with('success', 'Profile updated.');
