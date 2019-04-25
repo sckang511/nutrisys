@@ -16,9 +16,6 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-                            <h2>Something</h2>
-                        </div>
-                    @endif
 
                     <h3>Build your own nutrition recipe!</h3>
 

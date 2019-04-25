@@ -94,11 +94,8 @@
                     response = JSON.stringify(data, null, "  ");
                     //document.getElementById("search_results").innerHTML = response;
                     //console.log(data);
-                },
-                error: function (data) {
-                    $('#search_results').html(data);
                 }
- 
+                 
                 response = JSON.stringify(data, null, "  ");
                 //document.getElementById("search_results").innerHTML = response;
                 //console.log(data);
