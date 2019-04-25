@@ -1,35 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container shadow-sm p-3 mb-5 bg-white rounded" style="background-color: white">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Search</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
+        <div class="col-md-10">
+            <div class="text-left" style="margin-top: 20px;">
+                <div class="page-header text-info">
+                    <h1>SEARCH FOOD</h1>
+                </div><br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <form class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search Your Food By Name" aria-label="Search" id="food_search">
+                            </form>
+                            <div style="margin-top: 30px;">
+                                <pre id="search_results" style="display: none;">
+                                    <!-- Results -->                
+                                </pre>
+                            </div>
                         </div>
-                    @endif
-
-                    <form class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" id="food_search">
-                    </form>
-                    <div style="margin-top: 30px;">
-                        <pre id="search_results" style="display: none;">
-                            <!-- Results -->                
-                        </pre>
                     </div>
-                </div>
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <h5>@include('message/message')</h5>
+                            </div>
+                        </div>
+                </div><br><br>
             </div>
         </div>
     </div>
-</div>
-
-
+    
 <script>
 
     var request = "https://trackapi.nutritionix.com/v2/search/instant?query=";
@@ -85,7 +87,16 @@
                         console.log(brandedArray[i]);
                         var div = makeCards(brandedArray[i], "branded");
                         resultsdiv.appendChild(div);                        
+                        
+                        
                     }
+     
+                    response = JSON.stringify(data, null, "  ");
+                    //document.getElementById("search_results").innerHTML = response;
+                    //console.log(data);
+                },
+                error: function (data) {
+                    $('#search_results').html(data);
                 }
  
                 response = JSON.stringify(data, null, "  ");
@@ -292,7 +303,5 @@ function viewNutritionDetails(nutritionInfo) {
    resultsdiv.appendChild(div);
 }
 
-
 </script>
-
 @endsection

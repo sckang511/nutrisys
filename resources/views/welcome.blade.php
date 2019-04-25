@@ -20,37 +20,37 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
-
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-
             .position-ref {
                 position: relative;
             }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
-
             .content {
                 text-align: center;
+                font-size: 28px;
+                color: #ffd67f;
             }
-
             .title {
-                font-size: 94px;
+                font-size: 120px;
                 color: #fff;
             }
-
+            .subTitle {
+                font-size: 40px;
+                color: #fff;
+            }
             .links > a {
+                text-align: center;
                 color: #fff;
                 padding: 0 25px;
                 font-size: 20px;
@@ -59,28 +59,40 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
         </style>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height text-white bg-dark" style="background-image: url('images/background/green.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; margin: 30px;">
-            <div class="content">
-                <div class="title m-b-md">
-                    Nutrisys
+    <body style="background-image: url('images/background/green.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; margin: 20px;">
+        <div class="flex-center position-ref full-height text-white bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="content">
+                            <div class="title m-b-md">
+                                Nutrisys
+                            </div>
+                            <h2 class="subTitle">How It Works?</h2>
+                            <h5>We deliver a proven program and you'll learn how to eat healthier<br> to help keep yourself healthy every day!</h5>
+                            <hr style="width: 60%;">
+                            <h3 class="text-light bg-dark subTitle">Create a New Account</h3>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="links">
-                @if (Route::has('login'))
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                @endif
+                <div class="row text-center">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="links" style="text-align: center;">
+                            @if (Route::has('login'))
+                                @auth
+                                    <a href="{{ url('/home') }}">Home</a>
+                                @else
+                                    <a href="{{ route('login') }}">Login</a>
+                                    <a href="{{ route('register') }}">Register</a>
+                                @endauth
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container shadow-sm p-3 mb-5 bg-white rounded" style="background-color: white">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="text-left" style="margin-top: 20px;">
-                <div class="page-header">
-                <h1>DAILY GOAL</h1>
+                <div class="page-header text-info">
+                    <h1>DAILY GOAL</h1>
                 </div><br>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h4 class="display-4">Set Daily Goals</h4><br>
+                        <div class="col-md-10 col-md-offset-1">
+                            <h5 class="display-4">Set Daily Goals</h5><br>
                             <div class="lead">
                                 <form class="form-group" action = "{{ route('store') }}" method = "POST">
                                     {{ csrf_field() }}
                                     <div class="row form-group">
-                                        <label class="control-label">Select Preference</label><br>
-                                        <select class="form-control input-lg" name="preference">
+                                        <label class="control-label"><h4>Select Preference:</h4></label>&emsp;
+                                        <select class="form-control input-lg col-6" name="preference">
                                             <option value="Carbohydrate">Carbohydrate</option>
                                             <option value="Calories">Calories</option>
                                             <option value="Protein">Protein</option>
@@ -29,16 +29,15 @@
                                         </select>
                                     </div>
                                     <div class="row form-group">
-                                        <label class="control-label">Select Goal:</label><br>
-                                        <select class="form-control input-lg" name="goal_type">
+                                        <label class="control-label"><h4>Goal Type:</h4></label>&emsp;&emsp;&emsp;&emsp;
+                                        <select class="form-control input-lg col-6" name="type">
                                             <option value="Daily">Daily</option>
                                             <option value="Weekly">Weekly</option>
-                                            <option value="Qurterly">Qurterly</option>
                                         </select>
                                     </div>
                                     <div class="row form-group">
-                                        <label class="control-label">Prefered Value:</label><br>
-                                        <input class="form-control input-lg" type="number" name="the_value" required>
+                                        <label class="control-label"><h4>Prefered Value:</h4></label>&emsp;&emsp;
+                                        <input class="form-control input-lg col-6" type="number" name="value">
                                     </div>
                                     <div class="row form-group"><br>                       
                                         <button type="submit" class="btn btn-success btn-lg" style="padding: 7px 10px;"><i class="fa fa-floppy-o"></i>&emsp;Set Goal</button>
@@ -48,8 +47,8 @@
                         </div>
                     </div>
                         <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <h3>@include('message/message')</h3>
+                            <div class="col-md-10 col-md-offset-1">
+                                <h5>@include('message/message')</h5>
                             </div>
                         </div>
                 </div><br><br>

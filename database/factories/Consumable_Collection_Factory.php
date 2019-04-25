@@ -1,7 +1,5 @@
 <?php
-
 use Faker\Generator as Faker;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -12,38 +10,38 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
-$factory->define(App\Consumable_Collection::class, function (Faker $faker) {
-
-    $user_pool = sizeof(App\User::all()) - 1;
-    $string = 'Breakfast';
+$factory->define(App\Nutrition::class, function (Faker $faker) {
+    $id = '5ab0b2008739ed2bf27a98';
+    $string = 'steak';
     $random = rand(1, 5);
     switch($random) {
     case 1:
-        $string = 'Breakfast';
+        $string = 'steak';
         break;
     case 2:
-        $string = 'Lunch';
+        $string = 'egg';
         break;
     case 3:
-        $string = 'Dinner';
+        $string = 'carrot';
         break;
     case 4:
-        $string = 'Other';
+        $string = 'beef';
         break;
     case 5:
-        $string = 'Snack';
+        $string = 'pork';
         break;
     default:
-        $string = 'Breakfast';
+        $string = 'cake';
         break;
     }
-
-    date_default_timezone_set('America/Chicago');
-
     return [
-        'user_id' => rand(1, $user_pool),
-        'date' => now(),
-        'consumable_type' => $string,
+        'item_id' => $id,
+        'item_name' => $string,
+        'item_image' => 'https://queal.com/bootstrap-pages/images/diet.png',
+        'serving_qty' => rand(1, 10),
+        'serving_unit' => 'oz',
+        'calorie' => rand(100, 1000),
+        'protein' => rand(100, 1000),
+        'carbohydrate' => rand(100, 1000),
     ];
 });
