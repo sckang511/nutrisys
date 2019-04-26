@@ -164,11 +164,11 @@
                                     });
             
                                     $("document").ready(function() {
-                                        //$("#breakfast").click();
-                                        //$("#lunch").click();
-                                        //$("#dinner").click();
-                                        //$("#other").click();
-                                        //$("#snack").click();
+                                        $("#breakfast").click();
+                                        $("#lunch").click();
+                                        $("#dinner").click();
+                                        $("#other").click();
+                                        $("#snack").click();
                                     });
             
                                     function viewDetails(info) {
