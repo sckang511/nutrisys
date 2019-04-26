@@ -25,6 +25,8 @@ Route::get('/food', 'Food\LogController@index')->name('log');
 Route::get('/food/log', 'Food\LogController@index')->name('log');
 Route::get('/food/log/show/', 'Food\LogController@index');
 Route::get('/food/log/show/{date}', 'Food\LogController@show');
+Route::get('/food/log/delete/', 'Food\LogController@index');
+Route::get('/food/log/delete/{id}', 'Food\LogController@delete');
 Route::get('/food/search', 'Food\SearchController@index')->name('search');
 Route::get('/food/recipe', 'Food\RecipeController@index')->name('recipe');
 Route::post('/food/recipe', 'Food\RecipeController@store')->name('recipe');

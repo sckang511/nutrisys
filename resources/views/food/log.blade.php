@@ -155,7 +155,6 @@
                                                                 <span style="float:left;">Protein: {{$snack['protein']}}</span>
                                                                 <?php $info = json_encode($snack); ?>
                                                                 <button type="button" class="btn btn-info" style="float:left;" onclick='viewDetails(<?php echo $info; ?>)'>View Details</button>
-                                                           
                                                             </pre>
                                                             
                                                         @endforeach
@@ -217,10 +216,18 @@
             
                                     function viewDetails(info) {
                                         var div = document.getElementById('log-content');
+                                        var json = JSON.stringify(info, null, 2);
                                         var content = "<pre>" + JSON.stringify(info, null, 2);
-                                        content += "<br><button class='btn btn-info' onclick='reload()'>Back</button></pre>";
+                                        content += "<br><button style='margin-right:10px; background-color: deepSkyBlue;' class='btn btn-info' onclick='reload()'>Back</button>";
+                                        //content += `<button class='btn btn-info' style='background-color: red' onclick='deleteItem(${json})'>Delete</button></pre>`
                                         div.innerHTML = content;
+                                    }
 
+                                    function deleteItem(info) {
+                                        var isConfirmed = confirm("Are you sure you would like to delete the food item " + info.item_name + "?");
+                                        if (isConfirmed) {
+                                            window.location.href = `{{URL::to('food/log/')}}`;
+                                        }
                                     }
             
                                     function reload() {
