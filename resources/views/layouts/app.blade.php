@@ -100,7 +100,7 @@
                 <a href="#">
                 <i class="fa fa-shopping-cart"></i>
                 <span>Food</span>
-                <span class="badge badge-pill badge-danger">New</span>
+                
                 </a>
                 <div class="sidebar-submenu">
                 <ul>

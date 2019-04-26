@@ -25,7 +25,8 @@
                                             <span id="date-log">{{ $results['Date'] }}</span>
                                         </li>
                                         <li class="food-log-table-dropdown" id="breakfast">
-                                                <span>Breakfast</span>
+                                                <span>Breakfast  </span> 
+                                                <span class="badge badge-pill badge-danger">{{sizeof($results['Breakfast'])}}</span>
                                                 <div class="food-log-table-dropdown-submenu" id="breakfast-sub">
                                                 <ul>
                                                     @if (!empty($results['Breakfast']))
@@ -50,7 +51,8 @@
                                         </li>     
                                         
                                         <li class="food-log-table-dropdown" id="lunch">
-                                                <span>Lunch</span>
+                                                <span>Lunch   </span>
+                                                <span class="badge badge-pill badge-danger">{{sizeof($results['Lunch'])}}</span>
                                                 <div class="food-log-table-dropdown-submenu" id="lunch-sub">
                                                 <ul>
                                                     @if (!empty($results['Lunch']))
@@ -75,7 +77,8 @@
                                         </li>           
             
                                         <li class="food-log-table-dropdown" id="dinner">
-                                                <span>Dinner</span>
+                                                <span>Dinner   </span>
+                                                <span class="badge badge-pill badge-danger">{{sizeof($results['Dinner'])}}</span>
                                                 <div class="food-log-table-dropdown-submenu" id="dinner-sub">
                                                 <ul>
                                                     @if (!empty($results['Dinner']))
@@ -101,7 +104,8 @@
                                         </li>   
                                         
                                         <li class="food-log-table-dropdown" id="other">
-                                                <span>Other</span>
+                                                <span>Other   </span>
+                                                <span class="badge badge-pill badge-danger">{{sizeof($results['Other'])}}</span>
                                                 <div class="food-log-table-dropdown-submenu" id="other-sub">
                                                 <ul>
                                                     @if (!empty($results['Other']))
@@ -126,7 +130,8 @@
                                         </li>  
             
                                         <li class="food-log-table-dropdown" id="snack">
-                                                <span>Snack</span>
+                                                <span>Snack   </span>
+                                                <span class="badge badge-pill badge-danger">{{sizeof($results['Snack'])}}</span>
                                                 <div class="food-log-table-dropdown-submenu" id="snack-sub">
                                                 <ul>
                                                     @if (!empty($results['Snack']))
