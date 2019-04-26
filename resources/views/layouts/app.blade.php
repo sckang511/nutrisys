@@ -109,7 +109,7 @@
                     </li>
                     <li>
                     <a href="{{route('search')}}">Search
-                        <span class="badge badge-pill badge-danger">New</span> </a>
+                        </a>
                     </li>                
                     <li>
                     <a href="{{route('recipe')}}">Recipe</a>
@@ -145,9 +145,6 @@
                 <ul>
                     <li>
                     <a href="{{route('profile')}}">Profile</a>
-                    </li>
-                    <li>
-                    <a href="{{route('settings')}}">Settings</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"
