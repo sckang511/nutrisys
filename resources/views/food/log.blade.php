@@ -11,10 +11,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-11">
+                            <table>
+                                <tr>
+                                <td style="padding-top: 15px;">
+                            <p>Date: <input type="text" class="datepicker" id="datepicker"></p></td>
+                            <td><button type="submit" class="btn btn-success" id="go" style="margin-left: 10px;">Go</button>
+                                </td>
+                            </tr>
+                            </table>
                             <div class="food-log-table" id="log-content">
                                     <ul class="food-log-table-ul">
                                         <li class="food-log-table-header">
-                                            <span>{{ date('l') . " " . date("Y/m/d") }}</span>
+                                            <span id="date-log">{{ $results['Date'] }}</span>
                                         </li>
                                         <li class="food-log-table-dropdown" id="breakfast">
                                                 <span>Breakfast</span>
@@ -143,6 +151,8 @@
                                         </li>  
                                     </ul>
                                 </div>
+
+                
             
             
                                 <script>         
@@ -169,13 +179,33 @@
                                         $("#dinner").click();
                                         $("#other").click();
                                         $("#snack").click();
+
+
                                     });
+
+                                    $("document").ready(function($) {
+                                            $('.datepicker').datepicker({
+                                                dateFormat: "yy-mm-dd"
+                                            });
+                                    });
+
+                                    $("#go").click(function() {
+                                        var date = document.getElementById("datepicker").value;
+                                        var newDate = new Date(date);
+                                        var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+                                        if (date != "") {
+                                            document.getElementById("date-log").innerHTML = days[newDate.getDay()] + " " + date;
+                                            window.location.href = `{{URL::to('food/log/show/${date}')}}`;
+                                        }
+                                    });
+                                
             
                                     function viewDetails(info) {
                                         var div = document.getElementById('log-content');
                                         var content = "<pre>" + JSON.stringify(info, null, 2);
                                         content += "<br><button class='btn btn-info' onclick='reload()'>Back</button></pre>";
                                         div.innerHTML = content;
+
                                     }
             
                                     function reload() {
