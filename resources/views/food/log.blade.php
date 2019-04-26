@@ -27,9 +27,10 @@
                                         <li class="food-log-table-dropdown" id="breakfast">
                                                 <span>Breakfast  </span> 
                                                 <span class="badge badge-pill badge-danger">{{sizeof($results['Breakfast'])}}</span>
+                                                @if (!empty($results['Breakfast']))
                                                 <div class="food-log-table-dropdown-submenu" id="breakfast-sub">
                                                 <ul>
-                                                    @if (!empty($results['Breakfast']))
+                                                    
                                                         @foreach ($results['Breakfast'] as $breakfast)
                                                             <pre>
                                                                 <img src={{$breakfast['item_image']}} width="150" height="150" style="float:left;">
@@ -44,18 +45,20 @@
                                                             </pre>
                                                             
                                                         @endforeach
-                                                    @endif
+                                                    
             
                                                 </ul>
                                                 </div>
+                                                @endif
                                         </li>     
                                         
                                         <li class="food-log-table-dropdown" id="lunch">
                                                 <span>Lunch   </span>
                                                 <span class="badge badge-pill badge-danger">{{sizeof($results['Lunch'])}}</span>
+                                                @if (!empty($results['Lunch']))
                                                 <div class="food-log-table-dropdown-submenu" id="lunch-sub">
                                                 <ul>
-                                                    @if (!empty($results['Lunch']))
+                                                    
                                                         @foreach ($results['Lunch'] as $lunch)
                                                             <pre>
                                                                 <img src={{$lunch['item_image']}} width="150" height="150" style="float:left;">
@@ -71,17 +74,19 @@
                                                             </pre>
                                                             
                                                         @endforeach
-                                                    @endif
+                                                    
                                                 </ul>
                                                 </div>
+                                                @endif
                                         </li>           
             
                                         <li class="food-log-table-dropdown" id="dinner">
                                                 <span>Dinner   </span>
                                                 <span class="badge badge-pill badge-danger">{{sizeof($results['Dinner'])}}</span>
+                                                @if (!empty($results['Dinner']))
                                                 <div class="food-log-table-dropdown-submenu" id="dinner-sub">
                                                 <ul>
-                                                    @if (!empty($results['Dinner']))
+                                                    
                                                         @foreach ($results['Dinner'] as $dinner)
                                                             <pre>
                                                                 <img src={{$dinner['item_image']}} width="150" height="150" style="float:left;">
@@ -97,18 +102,20 @@
                                                             </pre>
                                                             
                                                         @endforeach
-                                                    @endif
+                                                    
             
                                                 </ul>
                                                 </div>
+                                                @endif
                                         </li>   
                                         
                                         <li class="food-log-table-dropdown" id="other">
                                                 <span>Other   </span>
                                                 <span class="badge badge-pill badge-danger">{{sizeof($results['Other'])}}</span>
+                                                @if (!empty($results['Other']))
                                                 <div class="food-log-table-dropdown-submenu" id="other-sub">
                                                 <ul>
-                                                    @if (!empty($results['Other']))
+                                                    
                                                         @foreach ($results['Other'] as $other)
                                                             <pre>
                                                                 <img src={{$other['item_image']}} width="150" height="150" style="float:left;">
@@ -124,17 +131,19 @@
                                                             </pre>
                                                             
                                                         @endforeach
-                                                    @endif
+                                                    
                                                 </ul>
                                                 </div>
+                                                @endif
                                         </li>  
             
                                         <li class="food-log-table-dropdown" id="snack">
                                                 <span>Snack   </span>
                                                 <span class="badge badge-pill badge-danger">{{sizeof($results['Snack'])}}</span>
+                                                @if (!empty($results['Snack']))
                                                 <div class="food-log-table-dropdown-submenu" id="snack-sub">
                                                 <ul>
-                                                    @if (!empty($results['Snack']))
+                                                    
                                                         @foreach ($results['Snack'] as $snack)
                                                             <pre>
                                                                 <img src={{$snack['item_image']}} width="150" height="150" style="float:left;">
@@ -150,9 +159,10 @@
                                                             </pre>
                                                             
                                                         @endforeach
-                                                    @endif
+                                                    
                                                 </ul>
                                                 </div>
+                                                @endif
                                         </li>  
                                     </ul>
                                 </div>
