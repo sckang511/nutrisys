@@ -26,6 +26,7 @@ Route::get('/food', 'Food\LogController@index')->name('log');
 Route::get('/food/log', 'Food\LogController@index')->name('log');
 Route::get('/food/search', 'Food\SearchController@index')->name('search');
 Route::get('/food/recipe', 'Food\RecipeController@index')->name('recipe');
+Route::post('/food/search','Food\SearchController@store')->name('storeFood');
 
 // GOAL
 Route::get('/goal', 'Goal\GoalController@index')->name('goal');

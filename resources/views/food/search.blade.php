@@ -99,7 +99,6 @@
     })
 
 function makeCards(object, resultType) {
-
     var div = document.createElement('pre');
     div.className = "pre-food";
     div.innerHTML = "image: <img src='" + object["photo"]["thumb"] + "' width='100' height='100'>" +
@@ -257,38 +256,112 @@ function viewNutritionDetails(nutritionInfo) {
         var fiber = ((nutritionInfo[0]["nf_dietary_fiber"] != null) ? nutritionInfo[0]["nf_dietary_fiber"] : '0');
         var potassium = ((nutritionInfo[0]["nf_potassium"] != null) ? nutritionInfo[0]["nf_potassium"] : '0');
         var sugars = ((nutritionInfo[0]["nf_sugars"] != null) ? nutritionInfo[0]["nf_sugars"] : '0');
-    div.innerHTML = "<img src='" + nutritionInfo[0]["photo"]["thumb"] + "' width='100' height='100'>" +
-                    "\nFood Name: " + nutritionInfo[0]["food_name"] + 
-                    "\nServing Unit: " + nutritionInfo[0]["serving_unit"] +
-                    //"\nserving qty: " + nutritionInfo[0]["serving_qty"] +
-                    "\nServing Quantity: <input type='text' id='serving_qty' maxlength='2' size='2'>" +
-                    "\nCalories: " + nutritionInfo[0]["nf_calories"] +
-                    "\nTotal Fat: " + nutritionInfo[0]["nf_total_fat"] + "g" +
-                    "\nSaturated Fat: " + nutritionInfo[0]["nf_saturated_fat"] + "g" +
-                    "\nCholesterol: " + nutritionInfo[0]["nf_cholesterol"] + "mg" +
-                    "\nSodium: " + nutritionInfo[0]["nf_sodium"] + "mg" +
-                    "\nTotal Carbohydrates: " + nutritionInfo[0]["nf_total_carbohydrate"] + "g" +
-                    //"\nDietary Fiber: " + nutritionInfo[0]["nf_dietary_fiber"] + "g" +
-                    "\nDietary Fiber: " + fiber + "g" +
-                    "\nSugars: " + sugars + "g" +
-                    "\nProtein: " + nutritionInfo[0]["nf_protein"] + "g" +
-                    "\nPotassium: " + potassium + "mg" +
-                    "\nMeal: <select id='consumable_type'>  <option value='Breakfast'>Breakfast</option>" +
-                    "<option value='Lunch'>Lunch</option>" +
-                    "<option value='Dinner'>Dinner</option>" +
-                    "<option value='Snack'>Snack</option>" +
-                    "<option value='Other'>Other</option>" +
-                    "</select>" +
-                    "\n<button type='button' class='btn btn-info' style='margin-top: 10px;'>Add</button>";
-                    /*if(resultType == "common"){
-                        //div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewCommonDetails(" + object["food_name"] + ")'>View Common Details</button>";
-                        div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewCommonDetails(\"" + object["food_name"] + "\")'>View Common Details</button>";
-
-                    } else {
-                        div.innerHTML = div.innerHTML + "<button type='button' class='btn btn-light' style='margin-left: 10px;margin-top: 10px' onClick='viewBrandedDetails()'>View Branded Details</button>";
-                    }*/
-                   
-   // return div;
+        var itemID = ((nutritionInfo[0]["nix_item_id"] != null) ? nutritionInfo[0]["nix_item_id"] : '');
+    div.innerHTML = "<div class='lead'>" +
+                   //"\n<form class='form-group' action = '{{ route('storeFood') }}' method = 'POST'> {{ csrf_field() }}" +
+                        "\n<table class='table table-striped'>" +
+                            "\n<thead>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'><img src='" + nutritionInfo[0]["photo"]["thumb"] + "' width='100' height='100'></th>" +
+                                    "\n<td></td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Food Name:</th>" +
+                                    "\n<td><input class='form-control' name='food_name' type='text' value='" + nutritionInfo[0]["food_name"] + "' readonly></td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Serving Unit:</th>" +
+                                    "\n<td><input class='form-control' name='serving_unit' type='text' value='" + nutritionInfo[0]["serving_unit"] + "' readonly></td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Serving Qty:</th>" +
+                                    "\n<td><input class='form-control' name='serving_qty' type='text'></td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Calories:</th>" +
+                                    "\n<td><input class='form-control' name='calories' type='text' value='" + nutritionInfo[0]["nf_calories"] + "' readonly></td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Total Fat:</th>" +
+                                    "\n<td><input class='form-control' name='total_fat' type='number' value='" + nutritionInfo[0]["nf_total_fat"] + "' readonly> g </td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Saturated Fat:</th>" +
+                                    "\n<td><input class='form-control' name='saturated_fat' type='number' value='" + nutritionInfo[0]["nf_saturated_fat"] + "' readonly> g </td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Cholesterol:</th>" +
+                                    "\n<td><input class='form-control' name='cholesterol' type='number' value='" + nutritionInfo[0]["nf_cholesterol"] + "' readonly> mg </td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Sodium:</th>" +
+                                    "\n<td><input class='form-control' name='sodium' type='number' value='" + nutritionInfo[0]["nf_sodium"] + "' readonly> mg </td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Total Carbohydrate:</th>" +
+                                    "\n<td><input class='form-control' name='total_carbohydrate' type='number' value='" + nutritionInfo[0]["nf_total_carbohydrate"] + "' readonly> g </td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Dietary Fiber:</th>" +
+                                    "\n<td><input class='form-control' name='dietary_fiber' type='number' value='" + fiber + "' readonly> g </td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Sugars:</th>" +
+                                    "\n<td><input class='form-control' name='sugars' type='number' value='" + sugars + "' readonly> g </td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Protein:</th>" +
+                                    "\n<td><input class='form-control' name='protein' type='number' value='" + nutritionInfo[0]["nf_protein"] + "' readonly> g </td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Potassium:</th>" +
+                                    "\n<td><input class='form-control' name='potassium' type='number' value='" + potassium + "' readonly> mg </td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n<thead class='thead-dark'>" +
+                                "\n<tr>" +
+                                    "\n<th scope='col'>Meal:</th>" +
+                                    "\n<td><select class='form-control input-lg' name='consumable_type'>  <option value='Breakfast'>Breakfast</option>" +
+                                    "\n<option value='Lunch'>Lunch</option>" +
+                                    "\n<option value='Dinner'>Dinner</option>" +
+                                    "\n<option value='Snack'>Snack</option>" +
+                                    "\n<option value='Other'>Other</option>" +
+                                    "\n</select></td>" +
+                                "\n</tr>" +
+                            "\n</thead>" +
+                            "\n</tbody>" +
+                            "\n</table>" +
+                            "\n<input class='form-control' name='item_id' type='hidden' value='" + itemID + "'>" +
+                            "\n<input class='form-control' name='image_url' type='hidden' value='" + nutritionInfo[0]["photo"]["thumb"] + "'><br><br>" +                     
+                             "\n<button type='submit' class='btn btn-success btn-lg'><i class='fa fa-floppy-o'></i>&emsp;Add</button>" +
+                        "\n</form>"+
+                        "\n</div>";
    resultsdiv.appendChild(div);
 }
 
