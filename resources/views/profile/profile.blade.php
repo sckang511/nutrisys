@@ -35,8 +35,8 @@
                               <tr>
                               
                                 <td>Profile Image: </td>
-                                <td><img class="rounded-circle" src="/storage/avatars/{{ $user->profile_picture }}" /></td>
-                                
+                                <td><img class="rounded-circle" src="{{ asset('avatars') }}/{{  $user->profile_picture }}" /></td>
+                               
                               
                               </tr>
                               <tr>
