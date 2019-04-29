@@ -1,23 +1,32 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container shadow-sm p-3 mb-5 bg-white rounded">
+<div class="container shadow-sm p-3 mb-5 bg-white rounded" style="background-color: white">
     <div class="row">
-        <div class="col-md-10">
-            <div class="text-left" style="margin-top: 20px;">
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif 
-                <div class="page-header text-info">     
-                    <h1>Welcome, {{ $user->username }}&emsp;@include('message/message')</h1>      
-                    <h5>@include('message/message')</h5>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="text-left">
+                  @if (session('status'))
+                      <div class="alert alert-success">
+                          {{ session('status') }}
+                      </div>
+                  @endif 
+                    <div class="page-header text-info">
+                        <div class="row">
+                        <div class="col-3">
+                            @if(!empty($user->profile_picture))
+                                <img class="rounded-circle" src="{{ asset('app/avatars/$user->profile_picture') }}" style="width: 120px; height: 120px; margin: 5px;">
+                            @else
+                                <img class="img-responsive img-rounded" src="{{ asset('images/user.jpg') }}" alt="User picture" style="width: 120px; height: 120px; margin: 5px;"> 
+                            @endif
+                        </div>
+                        <div class="col float-left">
+                            <h1>Welcome, {{ $user->username }}</h1>
+                        </div>
+                    </div>
                 </div><br>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <form class="form-horizontal" action = "{{ route('profile') }}" method = "POST">
+                        <div class="col-md-10">
+                            <form class="form-horizontal" action = "{{ route('profile') }}" method = "POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <table class="table">
                                 <thead>
@@ -33,11 +42,11 @@
                                         </tr>
                                         <tr>
                                             <td>First Name: </td>
-                                            <td><input class="form-control input-lg" type="text" name="first_name" value="{{ $user->first_name }}"></td>
+                                            <td><input class="form-control input-lg" type="text" name="first_name" value="{{ $user->first_name }}" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>Last Name: </td>
-                                            <td><input class="form-control input-lg" type="text" name="last_name" value="{{ $user->last_name }}"></td>
+                                            <td><input class="form-control input-lg" type="text" name="last_name" value="{{ $user->last_name }}" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>Gender: </td>
@@ -63,6 +72,11 @@
                                             <td>Weight in pounds: </td>
                                             <td><input class="form-control input-lg" type="number" name="weight" value="{{ $user->weight }}"></td>
                                         </tr>
+                                        <tr>
+                                          <td>Add Profile Image</td>
+                                          <td><input type="file" class="form-control-file" name="profile_picture" id="avatarFile" aria-describedby="fileHelp">
+                                          <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <div class="form-group row"><br>
@@ -72,11 +86,16 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h5>@include('message/message')</h5>
+        </div>
+    </div><br>
 </div>
 @endsection
 

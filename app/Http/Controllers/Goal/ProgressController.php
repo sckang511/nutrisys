@@ -39,49 +39,42 @@ class ProgressController extends Controller
         $today = date('Y-m-d');
         $lastWeek =  date('Y-m-d', strtotime('-1 week'));
         $nutrition_type = 'Protein';
+        $usid = Auth::User()->user_id;
 
         // get all the collections where the date is today
         $query = DB::table('goals')
-            ->join('consumable_collections', 'consumable_collections.user_id', '=', 'goals.user_id')
-            ->join('consumable_items', 'consumable_items.consumable_collection_id', '=', 'consumable_collections.consumable_collection_id')
-            ->join('nutritions', 'nutritions.nutrition_id', '=', 'consumable_items.nutrition_id')
-            ->whereDate('consumable_collections.date', '=', $today)
-            ->where('consumable_collections.user_id', '=', Auth::User()->user_id)
-            ->where('goals.nutrition_type', '=', $nutrition_type)
-            ->where('goals.goal_type', '=', 'Daily')
-            ->select('goals.goal_id', 'goals.user_id', 'goals.nutrition_type', 'goals.value', 'nutritions.protein', 'nutritions.serving_unit')->distinct()
-            ->paginate(5);
-
-        $recommend = DB::table('goals')
-            ->join('consumable_collections', 'consumable_collections.user_id', '=', 'goals.user_id')
-            ->whereDate('consumable_collections.date', '=', $today)
-            ->join('consumable_items', 'consumable_items.consumable_collection_id', '=', 'consumable_collections.consumable_collection_id')
-            ->join('nutritions', 'nutritions.nutrition_id', '=', 'consumable_items.nutrition_id')
-            ->where('consumable_collections.user_id', '=', Auth::User()->user_id)
-            ->where('goals.nutrition_type', '=', $nutrition_type)
-            ->where('goals.goal_type', '=', 'Daily')
-            ->select('goals.goal_id', 'goals.user_id', 'goals.goal_type', 'goals.nutrition_type', 'goals.value', 'nutritions.protein', 'nutritions.serving_unit')->distinct()
-            ->get();
+        ->join('consumable_collections', 'consumable_collections.user_id', '=', 'goals.user_id')
+        ->join('consumable_items', 'consumable_items.consumable_collection_id', '=', 'consumable_collections.consumable_collection_id')
+        ->join('nutritions', 'nutritions.nutrition_id', '=', 'consumable_items.nutrition_id')
+        ->whereDate('consumable_collections.date', '=', $today)
+        ->where('consumable_collections.user_id', '=', Auth::User()->user_id)
+        ->where('goals.nutrition_type', '=', $nutrition_type)
+        ->where('goals.goal_type', '=', 'Daily')
+        ->select('goals.goal_id', 'goals.user_id', 'goals.nutrition_type', 'goals.value', 'nutritions.protein', 'nutritions.serving_unit')->paginate(5);
 
         $fromDate = new Carbon('last week'); 
         $toDate = new Carbon('now');
-
+        
         $chart = DB::table('goals')
                 ->join('consumable_collections', 'consumable_collections.user_id', '=', 'goals.user_id')
                 ->join('consumable_items', 'consumable_items.consumable_collection_id', '=', 'consumable_collections.consumable_collection_id')
                 ->join('nutritions', 'nutritions.nutrition_id', '=', 'consumable_items.nutrition_id')
-                ->whereBetween('consumable_collections.date', array($fromDate->toDateTimeString(), $toDate->toDateTimeString()))
+                ->where('consumable_collections.date', '=', $today)
+                //->whereBetween('consumable_collections.date', array($fromDate->toDateTimeString(), $toDate->toDateTimeString()))
                 ->where('consumable_collections.user_id', '=', Auth::User()->user_id)
                 ->where('goals.user_id', '=', 'consumable_collections.user_id')
                 ->where('consumable_collections.consumable_collection_id', '=', 'consumable_items.consumable_collection_id')
                 ->where('consumable_items.nutrition_id', '=', 'nutritions.nutrition_id')
-                ->where('goals.nutrition_type', '=', $nutrition_type)->distinct()
-                ->where('goals.goal_type', '=', 'Weekly')
+                ->where('goals.nutrition_type', '=', $nutrition_type)
+                ->where('goals.goal_type', '=', 'daily')
                 ->select('goals.nutrition_type', 'goals.value', 'nutritions.protein', 'goals.created_at')
-                ->get();
+                ->get()->toArray();
+                //dd($chart);
 
-        //dd($chart);
-        return view('goal.progress')->with('query', $query)->with('recommend', $recommend)->with('chart', $chart);
+            
+
+        //dd($query);
+        return view('goal.progress')->with('query', $query)->with('chart', $chart);
 
     }
 
@@ -156,7 +149,7 @@ class ProgressController extends Controller
     {
         //$findUser = Goal::find($id);
         //$user = Auth::User()->user_id;
-        echo'I am here';
+        
         $goals_id = Goal::find($id)->delete();
 
         //view('goal.progress')->with('success', 'Record succesfully deleted.')
