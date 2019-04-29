@@ -29,7 +29,7 @@ Route::get('/food/log/delete/', 'Food\LogController@index');
 Route::get('/food/log/delete/{id}', 'Food\LogController@delete');
 Route::get('/food/search', 'Food\SearchController@index')->name('search');
 Route::get('/food/recipe', 'Food\RecipeController@index')->name('recipe');
-Route::post('/food/recipe', 'Food\RecipeController@store')->name('recipe');
+Route::post('/food/search','Food\SearchController@store')->name('storeFood');
 
 // GOAL
 Route::get('/goal', 'Goal\GoalController@index')->name('goal');
@@ -40,8 +40,7 @@ Route::put('/updateRecord/{id}','Goal\ProgressController@update')->name('update'
 Route::delete('/goal/progress/deleteRecord/{id}','Goal\ProgressController@delete')->name('delete');
 
 // PROFILE
-Route::get('/profile', 'Profile\ProfileController@index')->name('profile');
+Route::get('/profile', 'Profile\ProfileController@getProfile')->name('getprofile');
 Route::get('/profile/profile', 'Profile\ProfileController@index')->name('profile');
 Route::get('/profile/settings', 'Profile\SettingsController@index')->name('settings');
 Route::post('/profile/profile', 'Profile\ProfileController@store')->name('profile');
-Route::post('/profile/settings', 'Profile\SettingsController@store')->name('settings');

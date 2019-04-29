@@ -1,16 +1,16 @@
 @extends('layouts.app')
-
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 @section('content')
 <div class="container shadow-sm p-3 mb-5 bg-white rounded" style="background-color: white">
     <div class="row">
-        <div class="col-md-10">
-            <div class="text-left" style="margin-top: 20px;">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="text-left">
                 <div class="page-header text-info">
                     <h1>DAILY GOAL</h1>
                 </div><br>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
+                        <div class="col-md-10">
                             <h5 class="display-4">Set Daily Goals</h5><br>
                             <div class="lead">
                                 <form class="form-group" action = "{{ route('store') }}" method = "POST">
@@ -46,13 +46,12 @@
                             </div>
                         </div>
                     </div>
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <h5>@include('message/message')</h5>
-                            </div>
-                        </div>
-                </div><br><br>
-            </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <h5>@include('message/message')</h5>
+                    </div>
+                </div><br>
+            </div>   
         </div>
     </div>
 </div>

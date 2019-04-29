@@ -1,11 +1,12 @@
 <?php
-
 namespace App\Http\Controllers\Profile;
-
 use Symfony\Component\HttpFoundation\Session\Session;
 use App\Http\Controllers\Controller;
-use Auth;
 use Illuminate\Http\Request;
+use Auth;
+use Image;
+use DB;
+
 
 class ProfileController extends Controller
 {
@@ -16,9 +17,21 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = Auth::User();
-        return view('profile.profile')->with('user',$user);
+        //$user = Auth::User();
+        return view('profile.profile', array('user' => Auth::user()));
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+   /*  public function getProfile()
+    {
+        $profile_pic = Auth::User();
+        return view('profile.getprofile', $profile_pic);
+    } */
+
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +42,6 @@ class ProfileController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -67,7 +79,6 @@ class ProfileController extends Controller
         
         return view('profile.profile')->with('user',$user)->with('success', 'Profile updated.');
     }
-
     /**
      * Display the specified resource.
      *
@@ -78,7 +89,6 @@ class ProfileController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -89,7 +99,6 @@ class ProfileController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -99,9 +108,20 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        // Handle the user upload of avatar
+/*     	if($request->hasFile('profile_picture')){
+    		$avatar = $request->file('profile_picture');
+    		$filename = time() . '.' . $avatar->getClientOriginalExtension();
+    		Image::make($avatar)->resize(200, 200)->save( public_path('storage/app/public/avatars/' . $filename ) );
 
+    		$user = Auth::user();
+    		$user->avatar = $filename;
+    		$user->save();
+    	}
+
+    	return view('profile', array('user' => Auth::user()) ); */
+
+    }
     /**
      * Remove the specified resource from storage.
      *

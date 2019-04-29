@@ -57,8 +57,6 @@ class GoalController extends Controller
         $goal->value = $request->value;
         $goal->save();
 
-        //Session::flash('success', 'Daily value has been succesfully set.');
-
         //Redirect to another page
        return redirect('goal')->with('goal', $goal)->with('success', 'Daily value has been succesfully set.');
     }

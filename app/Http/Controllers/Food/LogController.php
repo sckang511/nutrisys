@@ -1,15 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Food;
-
 use Illuminate\Support\Facades\Auth;
 use App\Consumable_Item;
 use App\Nutrition;
 use App\Consumable_Collection;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-
 class LogController extends Controller
 {
     /**
@@ -21,28 +17,23 @@ class LogController extends Controller
     {
         // get the current user id
         $current_user = Auth::user()->id;
-
         // get todays date
         date_default_timezone_set('America/Chicago');
         $today = date('Y-m-d');
         $timestamp = strtotime($today);
         $day = date('l', $timestamp);
         $tomorrow = date('Y-m-d', strtotime('tomorrow'));
-
         // get all the collections where the date is today
         $builder = Consumable_Collection::whereDate('date', '>=', $today)->where('date', '<=', $tomorrow)->get()->toarray();
-
         $breakfasts = array();
         $lunches = array();
         $dinners = array();
         $others = array();
         $snacks = array();
-
         //test
         //printf("<pre>                                                ");
         //print_r($builder);
         //printf("</pre>");
-
         // from above collections sort by collection type: breakfast ...etc
         foreach($builder as $collection) {
             if ($collection['consumable_type'] == 'Breakfast') array_push($breakfasts, $collection);
@@ -51,8 +42,6 @@ class LogController extends Controller
             if ($collection['consumable_type'] == 'Other') array_push($others, $collection);
             if ($collection['consumable_type'] == 'Snack') array_push($snacks, $collection);
         }
-
-
         // for every collection I have, I need to search for items that match the coll id
         $breakfast_items = array();
         $lunch_items = array();
@@ -95,13 +84,11 @@ class LogController extends Controller
                 array_push($snack_items, $item);
             }
         } 
-
         $breakfast_objects = array();
         $lunch_objects =array();
         $dinner_objects = array();
         $other_objects = array();
         $snack_objects = array();
-
         for($i = 0; $i < sizeof($breakfast_items); $i++) {
             $id = $breakfast_items[$i]['nutrition_id'];
             $builder = Nutrition::where('nutrition_id', '=', $id)->get()->toarray();
@@ -142,7 +129,6 @@ class LogController extends Controller
                 $snack_items[$i]['consumable_item_id'] => $info,
             );
         }
-
         $results = array(
             "Breakfast" => $breakfast_objects,
             "Lunch" => $lunch_objects,
@@ -151,10 +137,8 @@ class LogController extends Controller
             "Snack" => $snack_objects,
             "Date" => $day . " " . $today,
         );
-
         return view('food.log')->with('results', $results);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -164,7 +148,6 @@ class LogController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -175,7 +158,6 @@ class LogController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -186,7 +168,7 @@ class LogController extends Controller
     {
         // get the current user id
         $current_user = Auth::user()->id;
-
+      
         // get todays date
         date_default_timezone_set('America/Chicago');
         $today = date($date);
@@ -196,7 +178,6 @@ class LogController extends Controller
 
         // get all the collections where the date is today
         $builder = Consumable_Collection::whereDate('date', '>=', $today)->where('date', '<=', $tomorrow)->get()->toarray();
-
         $breakfasts = array();
         $lunches = array();
         $dinners = array();
@@ -216,7 +197,6 @@ class LogController extends Controller
             if ($collection['consumable_type'] == 'Other') array_push($others, $collection);
             if ($collection['consumable_type'] == 'Snack') array_push($snacks, $collection);
         }
-
 
         // for every collection I have, I need to search for items that match the coll id
         $breakfast_items = array();
@@ -320,7 +300,6 @@ class LogController extends Controller
 
         return view('food.log')->with('results', $results);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -331,7 +310,6 @@ class LogController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -343,7 +321,6 @@ class LogController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

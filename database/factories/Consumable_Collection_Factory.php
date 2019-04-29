@@ -12,7 +12,6 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
 $factory->define(App\Consumable_Collection::class, function (Faker $faker) {
 
     $user_pool = sizeof(App\User::all()) - 1;
@@ -38,7 +37,6 @@ $factory->define(App\Consumable_Collection::class, function (Faker $faker) {
         $string = 'Breakfast';
         break;
     }
-
     date_default_timezone_set('America/Chicago');
 
     return [
