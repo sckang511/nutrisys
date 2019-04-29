@@ -30,7 +30,6 @@ Route::get('/food/log/delete/{id}', 'Food\LogController@delete');
 Route::get('/food/search', 'Food\SearchController@index')->name('search');
 Route::get('/food/recipe', 'Food\RecipeController@index')->name('recipe');
 Route::post('/food/search','Food\SearchController@store')->name('storeFood');
-//Route::get('/getData/{object}', 'Food\SearchController@index')->name('ajaxSearch');
 
 // GOAL
 Route::get('/goal', 'Goal\GoalController@index')->name('goal');

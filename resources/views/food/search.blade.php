@@ -42,6 +42,7 @@
 
 <script>
     var request = "https://trackapi.nutritionix.com/v2/search/instant?query=";
+
     var textinput = document.getElementById('food_search');
     textinput.addEventListener('keyup', function() {
         var value = textinput.value;
@@ -160,6 +161,7 @@ $.ajax({
                       //  resultsdiv.appendChild(div);                        
                   //  }
                 }
+
  
                 response = JSON.stringify(data, null, "  ");
                 //document.getElementById("search_results").innerHTML = response;
@@ -171,12 +173,14 @@ $.ajax({
             }
         });
     }
+
 function getBrandedDetails(itemID) {
     //textinput.value = '';
     //alert("Branded");
     // make the new api call
 var brandedRequest = "https://trackapi.nutritionix.com/v2/search/item?nix_item_id=";
 // retrieve results and send to viewNutritionDetails for display
+
 $.ajax({
             url: brandedRequest + itemID,
             type: 'GET',
@@ -191,7 +195,9 @@ $.ajax({
                 var resultsdiv = document.getElementById("search_results");
                 resultsdiv.style.display = "block";
                 resultsdiv.innerHTML = "";
+
                 var nutritionArray = data["foods"];
+
                 if (nutritionArray != null) {
                     //for (i = 0; i < nutritionArray.length; i++) {
                         console.log(nutritionArray);
@@ -210,6 +216,7 @@ $.ajax({
             }
         });
 }
+
 function viewNutritionDetails(nutritionInfo) {
     var resultsdiv = document.getElementById("search_results");
     textinput.value = '';
@@ -335,4 +342,5 @@ function viewNutritionDetails(nutritionInfo) {
             resultsdiv.appendChild(div);
         }
     </script>
+
 @endsection

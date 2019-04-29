@@ -20,9 +20,16 @@ Thank you for contributing to Nutrisys project. Please take note of the followin
 4. Please make sure the code is functional before you push your commits to the master.
 5. Please check for permission on making changes of files that are not isolated.
 
+## Pre-Setup
+
+1. Make sure you have working XAMP/LAMP server. Again, PHP version needs to be greater than 7.1. 
+   To install, go to: https://www.apachefriends.org/index.html
+2. Make sure you have installed composer on your system. 
+   To install, go to: https://getcomposer.org/
+
 ## Set Up
 
-1. Clone this project to your web server directory.
+1. Clone this project to your web server directory. On Windows, this is at C:\xampp\htdocs\.
 2. On the terminal, inside the project directory, run 'composer install' to get all the dependencies of this project
 3. Copy to create file .env from .env.example. Please make sure your database credentials are as specified.
 4. On the terminal, inside the project directory, run 'php artisan migrate' to migrate the laravel database specifications to your local database.  Make sure to create a database for it to migrate to (i.e. nutrisys)!

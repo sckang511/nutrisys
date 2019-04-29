@@ -41,6 +41,7 @@ class RecipeController extends Controller
         'carbohydrate' => 'numeric', 'dietary_fiber' => 'numeric', 'sugar' => 'numeric', 
         'protein' => 'numeric', 'potassium' => 'numeric',
         ));
+
         $newRecipe = new Nutrition;
         $newRecipe->item_id = Auth::user()->username;
         $newRecipe->item_name = $request->item_name;
@@ -57,7 +58,7 @@ class RecipeController extends Controller
         $newRecipe->protein = $request->protein;
         $newRecipe->potassium = $request->potassium;
         $newRecipe->save();
-        
+
         return view('food.recipe')->with('success', 'A new recipe was added.');
     }
     /**

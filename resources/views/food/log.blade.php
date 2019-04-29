@@ -23,6 +23,7 @@
                                     </td>
                                 </tr>
                             </table><br>
+
                             <div class="food-log-table" id="log-content">
                                     <ul class="food-log-table-ul">
                                         <li class="food-log-table-header">
@@ -34,6 +35,7 @@
                                             @if (!empty($results['Breakfast']))
                                                 <div class="food-log-table-dropdown-submenu shadow-lg p-3 mb-5 bg-white rounded" id="breakfast-sub">
                                                     <ul>
+
                                                         @foreach ($results['Breakfast'] as $breakfast)
                                                             <pre style="overflow-x: hidden;">
                                                                 <img src={{$breakfast['item_image']}} width="150" height="150" style="float:left; padding: 10px; box-shadow: 3px 3px 1px grey;">
@@ -47,6 +49,7 @@
                                                                 <button type="button" class="btn btn-success" style="float:left;" onclick='viewDetails(<?php echo $info; ?>)'>View Details</button>
                                                             </pre>
                                                         @endforeach
+
                                                     </ul>
                                                 </div>
                                             @endif
@@ -57,6 +60,7 @@
                                             @if (!empty($results['Lunch']))
                                                 <div class="food-log-table-dropdown-submenu shadow-lg p-3 mb-5 bg-white rounded" id="lunch-sub">
                                                     <ul>
+
                                                         @foreach ($results['Lunch'] as $lunch)
                                                             <pre style="overflow-x: hidden;">
                                                                 <img src={{$lunch['item_image']}} width="150" height="150" style="float:left; padding: 10px; box-shadow: 3px 3px 1px grey;">
@@ -80,6 +84,7 @@
                                             @if (!empty($results['Dinner']))
                                                 <div class="food-log-table-dropdown-submenu shadow-lg p-3 mb-5 bg-white rounded" id="dinner-sub">
                                                     <ul>
+
                                                         @foreach ($results['Dinner'] as $dinner)
                                                             <pre style="overflow-x: hidden;">
                                                                 <img src={{$dinner['item_image']}} width="150" height="150" style="float:left; padding: 10px; box-shadow: 3px 3px 1px grey;">
@@ -103,6 +108,7 @@
                                             @if (!empty($results['Other']))
                                                 <div class="food-log-table-dropdown-submenu shadow-lg p-3 mb-5 bg-white rounded" id="other-sub">
                                                     <ul>
+
                                                         @foreach ($results['Other'] as $other)
                                                             <pre style="overflow-x: hidden;">
                                                                 <img src={{$other['item_image']}} width="150" height="150" style="float:left; padding: 10px; box-shadow: 3px 3px 1px grey;">
@@ -126,6 +132,7 @@
                                             @if (!empty($results['Snack']))
                                                 <div class="food-log-table-dropdown-submenu shadow-lg p-3 mb-5 bg-white rounded" id="snack-sub">
                                                     <ul>
+
                                                         @foreach ($results['Snack'] as $snack)
                                                             <pre style="overflow-x: hidden;">
                                                                 <img src={{$snack['item_image']}} width="150" height="150" style="float:left; padding: 10px; box-shadow: 3px 3px 1px grey;">
@@ -146,6 +153,7 @@
                                     </ul>
                                 </div>
                                 <script>
+
                                     $("#breakfast").click(function() {
                                         $("#breakfast-sub").slideToggle();            
                                     });
@@ -168,11 +176,13 @@
                                         $("#other").click();
                                         $("#snack").click();
                                     });
+
                                     $("document").ready(function($) {
                                             $('.datepicker').datepicker({
                                                 dateFormat: "yy-mm-dd"
                                             });
                                     });
+
                                     $("#go").click(function() {
                                         var date = document.getElementById("datepicker").value;
                                         var newDate = new Date(date);
@@ -206,6 +216,7 @@
                                                                 "\nSugar:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["sugar"] + "<br>"+
                                                             "\n</div>" +
                                                         "\n</div>";
+
                                         content += "<br><button style='margin-right:10px; background-color: deepSkyBlue;' class='btn btn-info' onclick='reload()'>Back</button>";
                                         //content += `<button class='btn btn-info' style='background-color: red' onclick='deleteItem(${json})'>Delete</button></pre>`
                                         div.innerHTML = content;
@@ -217,6 +228,7 @@
                                             window.location.href = `{{URL::to('food/log/')}}`;
                                         }
                                     }
+
                                     function reload() {
                                         location.reload();
                                     }

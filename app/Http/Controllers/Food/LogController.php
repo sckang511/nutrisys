@@ -168,12 +168,14 @@ class LogController extends Controller
     {
         // get the current user id
         $current_user = Auth::user()->id;
+      
         // get todays date
         date_default_timezone_set('America/Chicago');
         $today = date($date);
         $timestamp = strtotime($today);
         $day = date('l', $timestamp);
         $tomorrow = date('Y-m-d', strtotime($date .' +1 day'));
+
         // get all the collections where the date is today
         $builder = Consumable_Collection::whereDate('date', '>=', $today)->where('date', '<=', $tomorrow)->get()->toarray();
         $breakfasts = array();
@@ -181,10 +183,12 @@ class LogController extends Controller
         $dinners = array();
         $others = array();
         $snacks = array();
+
         //test
         //printf("<pre>                                                ");
         //print_r($builder);
         //printf("</pre>");
+
         // from above collections sort by collection type: breakfast ...etc
         foreach($builder as $collection) {
             if ($collection['consumable_type'] == 'Breakfast') array_push($breakfasts, $collection);
@@ -193,6 +197,7 @@ class LogController extends Controller
             if ($collection['consumable_type'] == 'Other') array_push($others, $collection);
             if ($collection['consumable_type'] == 'Snack') array_push($snacks, $collection);
         }
+
         // for every collection I have, I need to search for items that match the coll id
         $breakfast_items = array();
         $lunch_items = array();
@@ -235,11 +240,13 @@ class LogController extends Controller
                 array_push($snack_items, $item);
             }
         } 
+
         $breakfast_objects = array();
         $lunch_objects =array();
         $dinner_objects = array();
         $other_objects = array();
         $snack_objects = array();
+
         for($i = 0; $i < sizeof($breakfast_items); $i++) {
             $id = $breakfast_items[$i]['nutrition_id'];
             $builder = Nutrition::where('nutrition_id', '=', $id)->get()->toarray();
@@ -280,6 +287,7 @@ class LogController extends Controller
                 $snack_items[$i]['consumable_item_id'] => $info,
             );
         }
+
         $results = array(
             "Breakfast" => $breakfast_objects,
             "Lunch" => $lunch_objects,
@@ -289,6 +297,7 @@ class LogController extends Controller
             "Date" => $day . " " . $date,
             "Tomorrow" => $tomorrow,
         );
+
         return view('food.log')->with('results', $results);
     }
     /**

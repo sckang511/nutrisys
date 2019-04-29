@@ -76,7 +76,6 @@
                             <h2 class="subTitle">How It Works?</h2>
                             <h5>We deliver a proven program and you'll learn how to eat healthier<br> to help keep yourself healthy every day!</h5>
                             <hr style="width: 60%;">
-                            <h3 class="text-light bg-dark subTitle">Create a New Account</h3>
                         </div>
                     </div>
                 </div>
