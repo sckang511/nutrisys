@@ -34,7 +34,10 @@
 .food-log-table-dropdown-submenu ul {
     padding-inline-start: 5%;
     list-style-type: none;
-    background-color: gainsboro;
+    background-color: white;
     padding: 15px;
 }
 
+.badge {
+    background-color: #008080;
+}

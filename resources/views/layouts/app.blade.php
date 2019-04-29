@@ -18,10 +18,19 @@
     
     <link href="{{ asset('css/style.css')}}" rel="stylesheet">   
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/food.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/food.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- JQuery UI -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
     <script src="{{ asset('js/main.js')}}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -50,14 +59,13 @@
         </div>
         <div class="sidebar-header">
             <div class="user-pic">
-            <img class="img-responsive img-rounded" src="{{ asset('images/user.jpg')}}"
-            alt="User picture">
+            <img class="img-responsive img-rounded" src="{{ asset('images/user.jpg') }}" alt="User picture">
             </div>
             <div class="user-info">
             <span class="user-name">{{ Auth::user()->first_name }}
                 <strong>{{ Auth::user()->last_name }}</strong>
             </span>
-            <span class="user-role">{{ Auth::user()->user_type }} user</span>
+            <span class="user-role">{{ ucfirst(Auth::user()->user_type) }} user</span>
             <span class="user-status">
                 <i class="fa fa-circle"></i>
                 <span>Online</span>
@@ -69,92 +77,79 @@
         <!-- sidebar-search  -->
         <div class="sidebar-menu">
             <ul>
-            <li class="header-menu">
-                <span>General</span>
-            </li>
-            <li class="sidebar-dropdown">
-                <a href="#">
-                <i class="fa fa-tachometer-alt"></i>
-                <span>Dashboard</span>
-                </a>
-                <div class="sidebar-submenu">
-                <ul>
-                    <li>
-                    <a href="{{route('home')}}">Overview
+                <li class="header-menu">
+                    <span>General</span>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>
+                    <span>Dashboard</span>
                     </a>
-                    </li>
-                    <li>
-                    <a href="{{route('calendar')}}">Calendar</a>
-                    </li>
-                </ul>
-                </div>
-            </li>
-            <li class="sidebar-dropdown">
-                <a href="#">
-                <i class="fa fa-shopping-cart"></i>
-                <span>Food</span>
-                <span class="badge badge-pill badge-danger">New</span>
-                </a>
-                <div class="sidebar-submenu">
-                <ul>
-                    <li>
-                    <a href="{{route('log')}}">Log</a>
-                    </li>
-                    <li>
-                    <a href="{{route('search')}}">Search
-                        <span class="badge badge-pill badge-danger">New</span> </a>
-                    </li>                
-                    <li>
-                    <a href="{{route('recipe')}}">Recipe</a>
-                    </li>
-                </ul>
-                </div>
-            </li>
-            
-            <li class="sidebar-dropdown">
-                <a href="#">
-                <i class="fa fa-chart-line"></i>
-                <span>Goal</span>
-                </a>
-                <div class="sidebar-submenu">
-                <ul>
-                    <li>
-                    <a href="{{route('goal')}}">Goals</a>
-                    </li>
-                    <li>
-                    <a href="{{route('progress')}}">Progress</a>
-                    </li>
-                    <li>
-                </ul>
-                </div>
-            </li>
-
-            <li class="sidebar-dropdown">
-                <a href="#">
-                <i class="fa fa-user-circle"></i>
-                <span>Profile</span>
-                </a>
-                <div class="sidebar-submenu">
-                <ul>
-                    <li>
-                    <a href="{{route('profile')}}">Profile</a>
-                    </li>
-                    <li>
-                    <a href="{{route('settings')}}">Settings</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                </ul>
-                </div>
-            </li>        
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="{{route('home')}}">Overview</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-cutlery" aria-hidden="true"></i><span>Food</span><span class="badge badge-pill badge-info">New</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                            <a href="{{route('log')}}">Log</a>
+                            </li>
+                            <li>
+                                <a href="{{route('search')}}">Search
+                                    <span class="badge badge-pill badge-info">New</span>
+                                </a>
+                            </li>                
+                            <li>
+                            <a href="{{route('recipe')}}">Recipe</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-chart-line"></i><span>Goal</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="{{route('goal')}}">Goals</a>
+                            </li>
+                            <li>
+                                <a href="{{route('progress')}}">Progress</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-user-circle-o"></i><span>Profile</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="{{route('profile')}}">Profile</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </li>        
             </ul>
         </div>
         <!-- sidebar-menu  -->
@@ -165,10 +160,7 @@
     @yield('content')
     </main>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
           <!--Nav bar-->

@@ -18,8 +18,8 @@ class GoalController extends Controller
      */
     public function index()
     {
-        $goals = Goal::all();
-        return view('goal.goal')->with('goals', $goals);
+        
+        return view('goal.goal');
     }
 
     /**
@@ -43,8 +43,8 @@ class GoalController extends Controller
         //Validate the data
         $this->validate($request, array(
             'preference' => 'required',
-            'goal_type' => 'required',
-            'the_value' => 'required',
+            'type' => 'required',
+            'value' => 'required',
         ));
 
         //Store in database
@@ -53,11 +53,9 @@ class GoalController extends Controller
         $uid = $user->user_id;
         $goal->user_id = $uid;
         $goal->nutrition_type = $request->preference;
-        $goal->goal_type = $request->goal_type;
-        $goal->value = $request->the_value;
+        $goal->goal_type = $request->type;
+        $goal->value = $request->value;
         $goal->save();
-
-        //Session::flash('success', 'Daily value has been succesfully set.');
 
         //Redirect to another page
        return redirect('goal')->with('goal', $goal)->with('success', 'Daily value has been succesfully set.');
