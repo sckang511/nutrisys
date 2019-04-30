@@ -13,7 +13,7 @@
                         <div class="row">
                         <div class="col-3">
                             @if(!empty($user->profile_picture))
-                                <img class="rounded-circle" src="{{ asset('app/avatars/$user->profile_picture') }}" style="width: 120px; height: 120px; margin: 5px;">
+                                <img class="rounded-circle" src="{{ asset('storage/avatars/' . $user->profile_picture) }}" style="width: 120px; height: 120px; margin: 5px;">
                             @else
                                 <img class="img-responsive img-rounded" src="{{ asset('images/user.jpg') }}" alt="User picture" style="width: 120px; height: 120px; margin: 5px;"> 
                             @endif

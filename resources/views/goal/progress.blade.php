@@ -24,8 +24,8 @@
                                 <tr>
                                     <th scope="row">{{ $goals->nutrition_type}}</th>
                                     <td><progress value="{{ $goals->protein }}" max="{{ $goals->value }}"></progress>&emsp;&emsp;{{ number_format(((($goals->protein)/($goals->value)) * 100), 0, '.','')}}%</td>
-                                    <td>{{ $goals->protein }} {{ $goals->serving_unit }}</td>
-                                    <td contenteditable="true">{{ $goals->value }} {{ $goals->serving_unit }}</td>
+                                    <td>{{ $goals->protein }}</td>
+                                    <td contenteditable="true">{{ $goals->value }}</td>
                                     <td><button class="btn btn-info btn-rounded btn-sm btn_edit" value="{{ $goals->goal_id }}"><i class="fas fa-pencil-square-o ml-1"></i>&emsp;Edit</td>
                                     <td><button class="btn btn-danger btn-rounded btn-sm btn_delete" value="{{ $goals->goal_id }}"><i class="fas fa-times ml-1"></i>&emsp;Delete</td>
                                 </tr>

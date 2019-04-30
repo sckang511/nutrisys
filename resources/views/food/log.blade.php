@@ -195,25 +195,26 @@
                                     
                                     function viewDetails(info) {
                                         var div = document.getElementById('log-content');
-                                        var json = JSON.stringify(info, null, 2);
-                                        alert(json);
+                                       // var json = JSON.stringify(info, null, 2);
+                                       // alert(json);
+                                       // console.log(json);
                                         var content = "<div >"+
                                                             "\n<div class='row'>" +
                                                                 "\n<h4>&emsp;NUTRITION FACTS</h4><br>"+
                                                             "\n</div>" +
                                                             "\n<div class='row border shadow p-3 mb-5 bg-white rounded' style='pading: 0 20px; margin : 0 200px 0 0;'>" +
-                                                                "\nFood Name:&emsp;&emsp;&emsp;&emsp;" + json["item_name"] + "<br>"+
-                                                                "\nServing Qty:&emsp;&emsp;&emsp;&emsp;" + json["serving_qty"] + "<br>"+
-                                                                "\nServing Unit:&emsp;&emsp;&emsp;" + json["serving_unit"] + "<br>"+
-                                                                "\nCarbohydrate:&emsp;&emsp;&emsp;" + json["carbohydrate"] + "<br>"+
-                                                                "\nSaturated Fat:&emsp;&emsp;&emsp;" + json["saturated_fat"] + "<br>"+
-                                                                "\nDietry Fiber:&emsp;&emsp;&emsp;&emsp;" + json["dietary_fiber"] + "<br>"+
-                                                                "\nTotal Fat:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["total_fat"] + "<br>"+
-                                                                "\nCholestrol:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["cholesterol"] + "<br>"+
-                                                                "\nCalorie:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["calorie"] + "<br>"+
-                                                                "\nSodium:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["sodium"] + "<br>"+
-                                                                "\nProtein:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["protein"] + "<br>"+
-                                                                "\nSugar:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["sugar"] + "<br>"+
+                                                                "\nFood Name:&emsp;&emsp;&emsp;&emsp;" + info["item_name"] + "<br>"+
+                                                                "\nServing Qty:&emsp;&emsp;&emsp;&emsp;" + info["serving_qty"] + "<br>"+
+                                                                "\nServing Unit:&emsp;&emsp;&emsp;" + info["serving_unit"] + "<br>"+
+                                                                "\nCarbohydrate:&emsp;&emsp;&emsp;" + info["carbohydrate"] + "<br>"+
+                                                                "\nSaturated Fat:&emsp;&emsp;&emsp;" + info["saturated_fat"] + "<br>"+
+                                                                "\nDietry Fiber:&emsp;&emsp;&emsp;&emsp;" + info["dietary_fiber"] + "<br>"+
+                                                                "\nTotal Fat:&emsp;&emsp;&emsp;&emsp;&emsp;" + info["total_fat"] + "<br>"+
+                                                                "\nCholestrol:&emsp;&emsp;&emsp;&emsp;&emsp;" + info["cholesterol"] + "<br>"+
+                                                                "\nCalorie:&emsp;&emsp;&emsp;&emsp;&emsp;" + info["calorie"] + "<br>"+
+                                                                "\nSodium:&emsp;&emsp;&emsp;&emsp;&emsp;" + info["sodium"] + "<br>"+
+                                                                "\nProtein:&emsp;&emsp;&emsp;&emsp;&emsp;" + info["protein"] + "<br>"+
+                                                                "\nSugar:&emsp;&emsp;&emsp;&emsp;&emsp;" + info["sugar"] + "<br>"+
                                                             "\n</div>" +
                                                         "\n</div>";
 
