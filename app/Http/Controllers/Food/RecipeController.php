@@ -59,7 +59,7 @@ class RecipeController extends Controller
         $newRecipe->potassium = $request->potassium;
         $newRecipe->save();
         
-        return view('food.recipe')->with('success', 'A new recipe was added.');
+        return view('food.recipe')->with('success', 'A new recipe was added.')->with('user', Auth::User());
     }
     /**
      * Display the specified resource.

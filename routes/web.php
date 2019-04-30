@@ -29,6 +29,7 @@ Route::get('/food/log/delete/', 'Food\LogController@index');
 Route::get('/food/log/delete/{id}', 'Food\LogController@delete');
 Route::get('/food/search', 'Food\SearchController@index')->name('search');
 Route::get('/food/recipe', 'Food\RecipeController@index')->name('recipe');
+Route::get('/food/recipe/store', 'Food\RecipeController@store')->name('recipeStore');
 Route::post('/food/search','Food\SearchController@store')->name('storeFood');
 //Route::get('/getData/{object}', 'Food\SearchController@index')->name('ajaxSearch');
 

@@ -192,7 +192,7 @@
                                     
                                     function viewDetails(info) {
                                         var div = document.getElementById('log-content');
-                                        //var json = JSON.stringify(info, null, 2);
+                                        var json = JSON.stringify(info, null, 2);
                                         //alert(json);
                                         var content = "<div >"+
                                                             "\n<div class='row'>" +
@@ -218,7 +218,7 @@
                                         div.innerHTML = content;
                                     }
                                     function deleteItem(info) {
-                                        var isConfirmed = confirm("Are you sure you would like to delete the food item " + info.item_name + "?");
+                                        var isConfirmed = confirm("Are you sure you would like to delete the food item " + info.consumable_item_id + "?");
                                         if (isConfirmed) {
                                             window.location.href = `{{URL::to('food/log/')}}`;
                                         }

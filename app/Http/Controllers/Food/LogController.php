@@ -254,17 +254,21 @@ class LogController extends Controller
             $id = $lunch_items[$i]['nutrition_id'];
             $builder = Nutrition::where('nutrition_id', '=', $id)->get()->toarray();
             $info = $builder[0];
+            $info += array("consumable_item_id"=>$lunch_items[$i]['consumable_item_id']);
             $lunch_objects += array(
                 $lunch_items[$i]['consumable_item_id'] => $info,
             );
+            
         }
         for($i = 0; $i < sizeof($dinner_items); $i++) {
             $id = $dinner_items[$i]['nutrition_id'];
             $builder = Nutrition::where('nutrition_id', '=', $id)->get()->toarray();
             $info = $builder[0];
+            $info += array("consumable_item_id"=>$dinner_items[$i]['consumable_item_id']);
             $dinner_objects += array(
                 $dinner_items[$i]['consumable_item_id'] => $info,
             );
+            
         }
         for($i = 0; $i < sizeof($other_items); $i++) {
             $id = $other_items[$i]['nutrition_id'];

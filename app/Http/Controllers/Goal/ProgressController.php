@@ -52,6 +52,14 @@ class ProgressController extends Controller
         INNER JOIN (SELECT nutrition_id, protein FROM nutritions) nutritions ON consumable_items.nutrition_id = nutritions.nutrition_id GROUP BY goals.goal_id, goals.user_id, p, goals.nutrition_type, goals.value");
         //dd($query);
 
+        //// This is hack for presentation
+        
+
+        
+        //// This is hack for presentation
+
+
+
         $fromDate = new Carbon('last week'); 
         $toDate = new Carbon('now');
         

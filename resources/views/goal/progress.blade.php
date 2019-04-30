@@ -74,12 +74,12 @@
             </div>   
         </div>
     </div>
-    <div class="row ">
+    {{-- <div class="row ">
         <div class="col-md-10 col-md-offset-1">
             <h2 class="page-header text-success">Weekly Progress</h2>
             <div class="jumbotron" id="curve_chart" style="width: auto; height: 550px"></div>
         </div>
-    </div>
+    </div> --}}
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
 <!-- Chart -->

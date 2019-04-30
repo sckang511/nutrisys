@@ -4,11 +4,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="text-left">
-                  @if (session('status'))
-                      <div class="alert alert-success">
-                          {{ session('status') }}
-                      </div>
-                  @endif 
+                  
                 <div class="page-header text-info">     
                     <h1>Recipe</h1>
                 </div><br>
@@ -16,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <h4>Build your own nutrition recipe!</h4>
-                            <form class="form-horizontal" action = "{{ route('recipe') }}" method = "POST">
+                            <form class="form-horizontal" action = "{{ route('recipeStore') }}" method = "GET">
                                 {{ csrf_field() }}
                                 <table class="table">
                                     <thead>
