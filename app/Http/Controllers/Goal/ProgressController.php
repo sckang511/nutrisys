@@ -45,11 +45,11 @@ class ProgressController extends Controller
         $usid = Auth::User()->user_id;
 
         // get all the collections where the date is today
-        $query = DB::select("SELECT goals.goal_id, goals.user_id, goals.nutrition_type, goals.value, nutritions.protein 
+        $query = DB::select("SELECT goals.goal_id, goals.user_id, (SELECT SUM(DISTINCT protein) FROM NUTRITIONS) AS p, goals.nutrition_type, goals.value 
         FROM goals
         INNER JOIN consumable_collections ON goals.user_id = consumable_collections.user_id
         INNER JOIN consumable_items ON consumable_collections.consumable_collection_id = consumable_items.consumable_collection_id
-        INNER JOIN (SELECT nutrition_id, protein FROM nutritions) nutritions ON consumable_items.nutrition_id = nutritions.nutrition_id GROUP BY nutritions.protein, goals.goal_id, goals.user_id, goals.nutrition_type, goals.value");
+        INNER JOIN (SELECT nutrition_id, protein FROM nutritions) nutritions ON consumable_items.nutrition_id = nutritions.nutrition_id GROUP BY goals.goal_id, goals.user_id, p, goals.nutrition_type, goals.value");
         //dd($query);
 
         $fromDate = new Carbon('last week'); 
@@ -166,8 +166,14 @@ class ProgressController extends Controller
         //$user = Auth::User()->user_id;
         
         $goals_id = Goal::find($id)->delete();
+        $user = Auth::User();
 
-        //view('goal.progress')->with('success', 'Record succesfully deleted.')
-        return $goals_id;
+        $query = DB::select("SELECT goals.goal_id, goals.user_id, (SELECT SUM(DISTINCT protein) FROM NUTRITIONS) AS p, goals.nutrition_type, goals.value 
+        FROM goals
+        INNER JOIN consumable_collections ON goals.user_id = consumable_collections.user_id
+        INNER JOIN consumable_items ON consumable_collections.consumable_collection_id = consumable_items.consumable_collection_id
+        INNER JOIN (SELECT nutrition_id, protein FROM nutritions) nutritions ON consumable_items.nutrition_id = nutritions.nutrition_id GROUP BY goals.goal_id, goals.user_id, p, goals.nutrition_type, goals.value");
+        
+        return view('goal.progress')->with('success', 'Record succesfully deleted.')->with('query', $query)->with('user', $user);
     }
 }

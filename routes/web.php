@@ -40,6 +40,7 @@ Route::get('/goal/progress', 'Goal\ProgressController@fetchData')->name('progres
 Route::post('/goal','Goal\GoalController@store')->name('store');
 Route::put('/updateRecord/{id}','Goal\ProgressController@update')->name('update');
 Route::delete('/deleteRecord/{id}','Goal\ProgressController@delete')->name('delete');
+Route::get('/progress/delete/{id}','Goal\ProgressController@delete');
 
 // PROFILE
 Route::get('/profile/profile', 'Profile\ProfileController@getProfile')->name('profile');

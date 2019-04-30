@@ -26,19 +26,17 @@
                         <th scope="col" class="text-info text-uppercase">Current Progress</th>
                         <th scope="col" class="text-info text-uppercase">Daily Serving</th>
                         <th scope="col" class="text-info text-uppercase">Daily Goal</th>
-                        <th scope="col" class="text-info text-uppercase">Edit</th>
                         <th scope="col" class="text-info text-uppercase">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @if(count($query) > 0)
+                        @if(count($query) >= 0)
                             @foreach ($query as $goals)
                                 <tr>
                                     <th scope="row">{{ $goals->nutrition_type}}</th>
-                                    <td><progress value="{{ $goals->protein }}" max="{{ $goals->value }}"></progress>&emsp;&emsp;{{ number_format(((($goals->protein)/($goals->value)) * 100), 0, '.','')}}%</td>
-                                    <td>{{ $goals->protein }}</td>
+                                    <td><progress value="{{ $goals->p }}" max="{{ $goals->value }}"></progress>&emsp;&emsp;{{ number_format(((($goals->p)/($goals->value)) * 100), 0, '.','')}}%</td>
+                                    <td>{{ $goals->p }} </td>
                                     <td contenteditable="true">{{ $goals->value }}</td>
-                                    <td><button class="btn btn-info btn-rounded btn-sm btn_edit" value="{{ $goals->goal_id }}"><i class="fas fa-pencil-square-o ml-1"></i>&emsp;Edit</td>
                                     <td><button class="btn btn-danger btn-rounded btn-sm btn_delete" value="{{ $goals->goal_id }}"><i class="fas fa-times ml-1"></i>&emsp;Delete</td>
                                 </tr>
                             @endforeach
@@ -85,7 +83,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
 <!-- Chart -->
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
@@ -116,7 +114,7 @@
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
         chart.draw(data, options);
     }
-</script> 
+</script>  --}}
 <!-- Ajax data deletion -->
 <script type="text/javascript">
 
@@ -127,22 +125,14 @@
             var id_data = $('.btn_delete').attr('value');
             $('#delete_modal').find('input[name="id"]').val(id_data);
             $('#delete_id').val(id_data);
-            //alert(id_data);
         });
 
         $('#modalDeleteForm').on('submit', function(e){
             e.preventDefault();
             var id = $('#delete_id').val();
-             
-            $.ajax({
-                type: "DELETE",
-                url: "deleteRecord/"+id,
-                data: $('#modalDeleteForm').serialize(),
-                success: function(response){
-                    $('#delete_modal').modal('hide');
-                    alert('Data Deleted');
-                }
-            });
+            window.location.href = `{{URL::to('progress/delete/${id}')}}`;
+            
+            
         });
     });
 </script>
