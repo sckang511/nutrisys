@@ -13,7 +13,8 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        return view('food.recipe');
+        $user = Auth::User();
+        return view('food.recipe')->with('user', $user);
     }
     /**
      * Show the form for creating a new resource.

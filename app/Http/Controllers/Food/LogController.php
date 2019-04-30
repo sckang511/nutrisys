@@ -137,7 +137,9 @@ class LogController extends Controller
             "Snack" => $snack_objects,
             "Date" => $day . " " . $today,
         );
-        return view('food.log')->with('results', $results);
+        
+        $user = Auth::User();
+        return view('food.log')->with('results', $results)->with('user', $user);
     }
     /**
      * Show the form for creating a new resource.

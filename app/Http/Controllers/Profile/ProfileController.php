@@ -26,11 +26,21 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   /*  public function getProfile()
+    public function getProfileAvatar(Request $request)
     {
-        $profile_pic = Auth::User();
-        return view('profile.getprofile', $profile_pic);
-    } */
+        // Handle the user upload of avatar
+    	if($request->hasFile('profile_picture')){
+    		$avatar = $request->file('profile_picture');
+    		$filename = time() . '.' . $avatar->getClientOriginalExtension();
+    		Image::make($avatar)->resize(200, 200)->save( public_path('/storage/avatars/' . $filename ) );
+
+    		$user = Auth::user();
+    		$user->avatar = $filename;
+    		$user->save();
+    	}
+
+    	return view('profile', array('user' => Auth::user()) );
+    }
 
 
     /**
@@ -108,18 +118,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Handle the user upload of avatar
-/*     	if($request->hasFile('profile_picture')){
-    		$avatar = $request->file('profile_picture');
-    		$filename = time() . '.' . $avatar->getClientOriginalExtension();
-    		Image::make($avatar)->resize(200, 200)->save( public_path('storage/app/public/avatars/' . $filename ) );
-
-    		$user = Auth::user();
-    		$user->avatar = $filename;
-    		$user->save();
-    	}
-
-    	return view('profile', array('user' => Auth::user()) ); */
+        
 
     }
     /**

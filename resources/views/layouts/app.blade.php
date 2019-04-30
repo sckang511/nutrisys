@@ -51,7 +51,11 @@
         </div>
         <div class="sidebar-header">
             <div class="user-pic">
-            <img class="img-responsive img-rounded" src="{{ asset('images/user.jpg') }}" alt="User picture">
+                @if(!empty($user->profile_picture))
+                <img class="rounded-circle" src="{{ asset('../storage/app/avatars/' . $user->profile_picture ) }}" style="width: 52px; height: 52px; margin: 5px;">
+            @else
+                <img class="img-responsive img-rounded" src="{{ asset('images/user.jpg') }}" alt="User picture" style="width: 52px; height: 52px; margin: 5px;"> 
+            @endif
             </div>
             <div class="user-info">
             <span class="user-name">{{ Auth::user()->first_name }}

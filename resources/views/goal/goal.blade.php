@@ -6,12 +6,12 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="text-left">
                 <div class="page-header text-info">
-                    <h1>DAILY GOAL</h1>
+                    <h1>DAILY / WEEKLY GOAL</h1>
                 </div><br>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10">
-                            <h5 class="display-4">Set Daily Goals</h5><br>
+                            <h5 class="display-4">Set Nutrition Goal</h5><br>
                             <div class="lead">
                                 <form class="form-group" action = "{{ route('store') }}" method = "POST">
                                     {{ csrf_field() }}

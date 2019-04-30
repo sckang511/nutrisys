@@ -6,8 +6,10 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Goal;
+use App\Nutrition;
 use App\User;
 use Auth;
+use DB;
 
 class GoalController extends Controller
 {
@@ -18,8 +20,8 @@ class GoalController extends Controller
      */
     public function index()
     {
-        
-        return view('goal.goal');
+        $user = Auth::User();
+        return view('goal.goal')->with('user', $user);
     }
 
     /**
@@ -49,6 +51,7 @@ class GoalController extends Controller
 
         //Store in database
         $goal = new Goal;
+
         $user = Auth::User();
         $uid = $user->user_id;
         $goal->user_id = $uid;

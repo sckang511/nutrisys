@@ -15,8 +15,8 @@ class CreateNutritionsTable extends Migration
     {
         Schema::create('nutritions', function (Blueprint $table) {
             $table->increments('nutrition_id');
-            $table->string('item_id');
-            $table->string('item_name');
+            $table->string('item_id')->nullable();
+            $table->string('item_name')->nullable();
             $table->string('item_image')->nullable();
             $table->double('serving_qty', 8, 2)->nullable();
             $table->string('serving_unit')->nullable();

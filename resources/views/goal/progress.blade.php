@@ -7,6 +7,18 @@
                 <div class="page-header text-info">
                     <h1>DAILY GOAL</h1>
                 </div><br>
+                {{--  <div class="lead">
+                    <div class="row form-group">
+                        <label class="control-label"><h4>Select Goal:</h4></label>&emsp;
+                        <select class="form-control input-lg col-6" name="view_goel">
+                            @if(count($dropdown) > 0)
+                                @foreach($dropdown as $item)
+                                    <option value="{{ $item->nutrition_type }}">{{ $item->nutrition_type }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+            </div> --}}
                 <table class="table table-striped table-responsive-md">
                     <thead>
                     <tr>
@@ -24,8 +36,8 @@
                                 <tr>
                                     <th scope="row">{{ $goals->nutrition_type}}</th>
                                     <td><progress value="{{ $goals->protein }}" max="{{ $goals->value }}"></progress>&emsp;&emsp;{{ number_format(((($goals->protein)/($goals->value)) * 100), 0, '.','')}}%</td>
-                                    <td>{{ $goals->protein }} {{ $goals->serving_unit }}</td>
-                                    <td contenteditable="true">{{ $goals->value }} {{ $goals->serving_unit }}</td>
+                                    <td>{{ $goals->protein }}</td>
+                                    <td contenteditable="true">{{ $goals->value }}</td>
                                     <td><button class="btn btn-info btn-rounded btn-sm btn_edit" value="{{ $goals->goal_id }}"><i class="fas fa-pencil-square-o ml-1"></i>&emsp;Edit</td>
                                     <td><button class="btn btn-danger btn-rounded btn-sm btn_delete" value="{{ $goals->goal_id }}"><i class="fas fa-times ml-1"></i>&emsp;Delete</td>
                                 </tr>
@@ -35,7 +47,7 @@
                         @endif
                     </tbody>
                 </table>
-                <h5 class="text-left">{{ $query->links() }}</h5>
+                {{-- <h5 class="text-left">{{ $query->links() }}</h5> --}}
                 <!-- Delete confirmation modal -->
                 <div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" ariellabeled_by="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -67,19 +79,6 @@
     <div class="row ">
         <div class="col-md-10 col-md-offset-1">
             <h2 class="page-header text-success">Weekly Progress</h2>
-           {{-- <div class="lead">
-                <form class="form-group" action = "{{ route('store') }}" method = "POST">
-                    {{ csrf_field() }}
-                    <div class="row form-group">
-                        <label class="control-label"><h4>Select Goal:</h4></label>&emsp;
-                        <select class="form-control input-lg col-6" name="view_goel">
-                            <option value="Daily">Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                        </select>
-                    </div>
-                </form>
-            </div> --}}
             <div class="jumbotron" id="curve_chart" style="width: auto; height: 550px"></div>
         </div>
     </div>
@@ -137,7 +136,7 @@
              
             $.ajax({
                 type: "DELETE",
-                url: "/goal/progress/deleteRecord/"+id,
+                url: "deleteRecord/"+id,
                 data: $('#modalDeleteForm').serialize(),
                 success: function(response){
                     $('#delete_modal').modal('hide');

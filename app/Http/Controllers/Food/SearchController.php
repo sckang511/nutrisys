@@ -20,7 +20,8 @@ class SearchController extends Controller
      */
     public function index()
     {
-        return view('food.search');
+        $user = Auth::User();
+        return view('food.search')->with('user', $user);
     }
     /**
      * Show the form for creating a new resource.

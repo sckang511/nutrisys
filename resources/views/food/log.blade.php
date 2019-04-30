@@ -23,6 +23,7 @@
                                     </td>
                                 </tr>
                             </table><br>
+
                             <div class="food-log-table" id="log-content">
                                     <ul class="food-log-table-ul">
                                         <li class="food-log-table-header">
@@ -34,6 +35,7 @@
                                             @if (!empty($results['Breakfast']))
                                                 <div class="food-log-table-dropdown-submenu shadow-lg p-3 mb-5 bg-white rounded" id="breakfast-sub">
                                                     <ul>
+
                                                         @foreach ($results['Breakfast'] as $breakfast)
                                                             <pre style="overflow-x: hidden;">
                                                                 <img src={{$breakfast['item_image']}} width="150" height="150" style="float:left; padding: 10px; box-shadow: 3px 3px 1px grey;">
@@ -47,6 +49,7 @@
                                                                 <button type="button" class="btn btn-success" style="float:left;" onclick='viewDetails(<?php echo $info; ?>)'>View Details</button>
                                                             </pre>
                                                         @endforeach
+
                                                     </ul>
                                                 </div>
                                             @endif
@@ -57,6 +60,7 @@
                                             @if (!empty($results['Lunch']))
                                                 <div class="food-log-table-dropdown-submenu shadow-lg p-3 mb-5 bg-white rounded" id="lunch-sub">
                                                     <ul>
+
                                                         @foreach ($results['Lunch'] as $lunch)
                                                             <pre style="overflow-x: hidden;">
                                                                 <img src={{$lunch['item_image']}} width="150" height="150" style="float:left; padding: 10px; box-shadow: 3px 3px 1px grey;">
@@ -80,6 +84,7 @@
                                             @if (!empty($results['Dinner']))
                                                 <div class="food-log-table-dropdown-submenu shadow-lg p-3 mb-5 bg-white rounded" id="dinner-sub">
                                                     <ul>
+
                                                         @foreach ($results['Dinner'] as $dinner)
                                                             <pre style="overflow-x: hidden;">
                                                                 <img src={{$dinner['item_image']}} width="150" height="150" style="float:left; padding: 10px; box-shadow: 3px 3px 1px grey;">
@@ -103,6 +108,7 @@
                                             @if (!empty($results['Other']))
                                                 <div class="food-log-table-dropdown-submenu shadow-lg p-3 mb-5 bg-white rounded" id="other-sub">
                                                     <ul>
+
                                                         @foreach ($results['Other'] as $other)
                                                             <pre style="overflow-x: hidden;">
                                                                 <img src={{$other['item_image']}} width="150" height="150" style="float:left; padding: 10px; box-shadow: 3px 3px 1px grey;">
@@ -126,6 +132,7 @@
                                             @if (!empty($results['Snack']))
                                                 <div class="food-log-table-dropdown-submenu shadow-lg p-3 mb-5 bg-white rounded" id="snack-sub">
                                                     <ul>
+
                                                         @foreach ($results['Snack'] as $snack)
                                                             <pre style="overflow-x: hidden;">
                                                                 <img src={{$snack['item_image']}} width="150" height="150" style="float:left; padding: 10px; box-shadow: 3px 3px 1px grey;">
@@ -185,32 +192,31 @@
                                     
                                     function viewDetails(info) {
                                         var div = document.getElementById('log-content');
-                                        var json = JSON.stringify(info, null, 2);
-                                        alert(json);
+                                        //var json = JSON.stringify(info, null, 2);
+                                        //alert(json);
                                         var content = "<div >"+
                                                             "\n<div class='row'>" +
                                                                 "\n<h4>&emsp;NUTRITION FACTS</h4><br>"+
                                                             "\n</div>" +
                                                             "\n<div class='row border shadow p-3 mb-5 bg-white rounded' style='pading: 0 20px; margin : 0 200px 0 0;'>" +
-                                                                "\nFood Name:&emsp;&emsp;&emsp;&emsp;" + json["item_name"] + "<br>"+
-                                                                "\nServing Qty:&emsp;&emsp;&emsp;&emsp;" + json["serving_qty"] + "<br>"+
-                                                                "\nServing Unit:&emsp;&emsp;&emsp;" + json["serving_unit"] + "<br>"+
-                                                                "\nCarbohydrate:&emsp;&emsp;&emsp;" + json["carbohydrate"] + "<br>"+
-                                                                "\nSaturated Fat:&emsp;&emsp;&emsp;" + json["saturated_fat"] + "<br>"+
-                                                                "\nDietry Fiber:&emsp;&emsp;&emsp;&emsp;" + json["dietary_fiber"] + "<br>"+
-                                                                "\nTotal Fat:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["total_fat"] + "<br>"+
-                                                                "\nCholestrol:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["cholesterol"] + "<br>"+
-                                                                "\nCalorie:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["calorie"] + "<br>"+
-                                                                "\nSodium:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["sodium"] + "<br>"+
-                                                                "\nProtein:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["protein"] + "<br>"+
-                                                                "\nSugar:&emsp;&emsp;&emsp;&emsp;&emsp;" + json["sugar"] + "<br>"+
+                                                                "\nFood Name:&emsp;&emsp;&emsp;&emsp;" + info["item_name"] + "<br>"+
+                                                                "\nServing Qty:&emsp;&emsp;&emsp;&emsp;" + info["serving_qty"] + "<br>"+
+                                                                "\nServing Unit:&emsp;&emsp;&emsp;&emsp;" + info["serving_unit"] + "<br>"+
+                                                                "\nCarbohydrate:&emsp;&emsp;&emsp;" + info["carbohydrate"] + "<br>"+
+                                                                "\nSaturated Fat:&emsp;&emsp;&emsp;" + info["saturated_fat"] + "<br>"+
+                                                                "\nDietry Fiber:&emsp;&emsp;&emsp;&emsp;" + info["dietary_fiber"] + "<br>"+
+                                                                "\nTotal Fat:&emsp;&emsp;&emsp;&emsp;&emsp;" + info["total_fat"] + "<br>"+
+                                                                "\nCholestrol:&emsp;&emsp;&emsp;&emsp;" + info["cholesterol"] + "<br>"+
+                                                                "\nCalorie:&emsp;&emsp;&emsp;&emsp;&emsp;" + info["calorie"] + "<br>"+
+                                                                "\nSodium:&emsp;&emsp;&emsp;&emsp;&emsp;" + info["sodium"] + "<br>"+
+                                                                "\nProtein:&emsp;&emsp;&emsp;&emsp;&emsp;" + info["protein"] + "<br>"+
+                                                                "\nSugar:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + info["sugar"] + "<br>"+
                                                             "\n</div>" +
                                                         "\n</div>";
                                         content += "<br><button style='margin-right:10px; background-color: deepSkyBlue;' class='btn btn-info' onclick='reload()'>Back</button>";
                                         //content += `<button class='btn btn-info' style='background-color: red' onclick='deleteItem(${json})'>Delete</button></pre>`
                                         div.innerHTML = content;
                                     }
-
                                     function deleteItem(info) {
                                         var isConfirmed = confirm("Are you sure you would like to delete the food item " + info.item_name + "?");
                                         if (isConfirmed) {
@@ -230,4 +236,3 @@
     </div><br>
 </div>
 @endsection
-

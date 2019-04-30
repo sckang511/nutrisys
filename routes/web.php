@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 // HOME
-Route::get('/home', 'Dashboard\HomeController@getRecommendation')->name('home');
+Route::get('/home', 'Dashboard\HomeController@index')->name('home');
 
 // FOOD
 Route::get('/food', 'Food\LogController@index')->name('log');
@@ -34,14 +34,15 @@ Route::post('/food/search','Food\SearchController@store')->name('storeFood');
 
 // GOAL
 Route::get('/goal', 'Goal\GoalController@index')->name('goal');
-//Route::get('/goal/progress', 'Goal\ProgressController@getChartData')->name('chart');
+//Route::get('/goal/progress', 'Goal\ProgressController@dataForDropdown');
+//Route::get('/goal/progress', 'Goal\ProgressController@dataForDropdown')->name('nutrition');
 Route::get('/goal/progress', 'Goal\ProgressController@fetchData')->name('progress');
 Route::post('/goal','Goal\GoalController@store')->name('store');
 Route::put('/updateRecord/{id}','Goal\ProgressController@update')->name('update');
-Route::delete('/goal/progress/deleteRecord/{id}','Goal\ProgressController@delete')->name('delete');
+Route::delete('/deleteRecord/{id}','Goal\ProgressController@delete')->name('delete');
 
 // PROFILE
-Route::get('/profile', 'Profile\ProfileController@getProfile')->name('getprofile');
+Route::get('/profile/profile', 'Profile\ProfileController@getProfile')->name('profile');
 Route::get('/profile/profile', 'Profile\ProfileController@index')->name('profile');
 Route::get('/profile/settings', 'Profile\SettingsController@index')->name('settings');
 Route::post('/profile/profile', 'Profile\ProfileController@store')->name('profile');

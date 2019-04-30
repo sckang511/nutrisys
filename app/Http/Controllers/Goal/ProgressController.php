@@ -21,8 +21,10 @@ class ProgressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-      public function getChartData()
+      public function index()
     {
+        
+        
         //
     } 
  
@@ -34,6 +36,7 @@ class ProgressController extends Controller
     public function fetchData()
     {
         //Fetch data from database
+        $user = Auth::User();
         // get todays date
         date_default_timezone_set('America/Chicago');
         $today = date('Y-m-d');
@@ -42,15 +45,12 @@ class ProgressController extends Controller
         $usid = Auth::User()->user_id;
 
         // get all the collections where the date is today
-        $query = DB::table('goals')
-        ->join('consumable_collections', 'consumable_collections.user_id', '=', 'goals.user_id')
-        ->join('consumable_items', 'consumable_items.consumable_collection_id', '=', 'consumable_collections.consumable_collection_id')
-        ->join('nutritions', 'nutritions.nutrition_id', '=', 'consumable_items.nutrition_id')
-        ->whereDate('consumable_collections.date', '=', $today)
-        ->where('consumable_collections.user_id', '=', Auth::User()->user_id)
-        ->where('goals.nutrition_type', '=', $nutrition_type)
-        ->where('goals.goal_type', '=', 'Daily')
-        ->select('goals.goal_id', 'goals.user_id', 'goals.nutrition_type', 'goals.value', 'nutritions.protein', 'nutritions.serving_unit')->paginate(5);
+        $query = DB::select("SELECT goals.goal_id, goals.user_id, goals.nutrition_type, goals.value, nutritions.protein 
+        FROM goals
+        INNER JOIN consumable_collections ON goals.user_id = consumable_collections.user_id
+        INNER JOIN consumable_items ON consumable_collections.consumable_collection_id = consumable_items.consumable_collection_id
+        INNER JOIN (SELECT nutrition_id, protein FROM nutritions) nutritions ON consumable_items.nutrition_id = nutritions.nutrition_id GROUP BY nutritions.protein, goals.goal_id, goals.user_id, goals.nutrition_type, goals.value");
+        //dd($query);
 
         $fromDate = new Carbon('last week'); 
         $toDate = new Carbon('now');
@@ -59,8 +59,8 @@ class ProgressController extends Controller
                 ->join('consumable_collections', 'consumable_collections.user_id', '=', 'goals.user_id')
                 ->join('consumable_items', 'consumable_items.consumable_collection_id', '=', 'consumable_collections.consumable_collection_id')
                 ->join('nutritions', 'nutritions.nutrition_id', '=', 'consumable_items.nutrition_id')
-                ->where('consumable_collections.date', '=', $today)
-                //->whereBetween('consumable_collections.date', array($fromDate->toDateTimeString(), $toDate->toDateTimeString()))
+                //->where('consumable_collections.date', '=', $today)
+                ->whereBetween('consumable_collections.date', array($fromDate->toDateTimeString(), $toDate->toDateTimeString()))
                 ->where('consumable_collections.user_id', '=', Auth::User()->user_id)
                 ->where('goals.user_id', '=', 'consumable_collections.user_id')
                 ->where('consumable_collections.consumable_collection_id', '=', 'consumable_items.consumable_collection_id')
@@ -70,12 +70,27 @@ class ProgressController extends Controller
                 ->select('goals.nutrition_type', 'goals.value', 'nutritions.protein', 'goals.created_at')
                 ->get()->toArray();
                 //dd($chart);
+        return view('goal.progress')->with('query', $query)->with('chart', $chart)->with('user', $user);
 
-            
+    }
 
-        //dd($query);
-        return view('goal.progress')->with('query', $query)->with('chart', $chart);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dataForDropdown()
+    {
+        // get todays date
+        date_default_timezone_set('America/Chicago');
+        $today = date('Y-m-d');
 
+        $dropdown = DB::table('goals')
+            ->select('goals.nutrition_type')
+            ->where('goals.created_at', '=', $today)->get();
+
+        dd($dropdown);
+        return view('goal.progress')->with('dropdown', $dropdown);
     }
 
     /**
